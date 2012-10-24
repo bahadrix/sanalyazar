@@ -1,0 +1,9 @@
+body {
+    font-family: 'Dosis',Verdana,Helvetica, sans-serif;
+    font-size: 1.2em;
+    text-align: center;
+}
+
+h1, div.siir {
+    text-shadow: 4px 4px 4px #eee;
+}

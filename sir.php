@@ -1,7 +1,8 @@
 <?php
-include 'core/db.php';
-include 'core/lingustian.php';
-include 'wordengine.php';
+include_once 'core/db.php';
+include_once 'core/lingustian.php';
+include_once 'wordengine.php';
+include_once 'duzenle.php';
 
 
 $we = new WordEngine();

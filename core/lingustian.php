@@ -103,13 +103,11 @@ class Lingustian {
 	public static function migirCoz($migirSablon) {
 		
 		$matches = array();
-		preg_match_all('/\{\w+\}\-?/u', $migirSablon, $matches); //db olmadığından şu an deneyemedim, yanlış olabilir. orjinali: /{[}\w-]*/u - bu tam doğru değil gibi geldi o yüzden değiştiriyim dedim.
-		
+		preg_match_all('/\{[\}\w\-]*/u', $migirSablon, $matches);
 		
 		$ogeler = array();
 		
 		$i = 0;
-		
 		foreach ($matches[0] as $match) {
 			$i++;
 			$oge = array();
@@ -143,7 +141,7 @@ class Lingustian {
 		
 			
 		}
-		echo "bu: " . $values[1] . "]";
+		//echo "bu: " . $values[1] . "]";
 		$i = 0;
 		foreach ($matches[0] as $match) { $i++;
 			
