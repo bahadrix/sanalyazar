@@ -5,6 +5,16 @@ body {
     text-align: center;
 }
 
-div.siir {
+div.maincontainer {
+    margin-top:70px;
     text-shadow: 4px 4px 4px #eee;
+    width:940px;
+    margin-left:auto;
+    margin-right:auto;
+    padding-top:20px;
+    padding-bottom:20px;
+}
+
+div.maincontainer h1 {
+    margin-top:0;
 }
