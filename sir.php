@@ -76,15 +76,15 @@ $migir = <<<MGR
 {sıfat} {isim}-lerin hepsi {kfiil}-ecek
 $gun_gelecek {isim}-ler $birbir {kfiil}-ecek
 {isim}-e $giren {isim} olmasa da,
-Bu {isim}-ler $birgun {kfiil}-ecek
+Bu {isim}-ler $birgun {kfiil}-ecek.
 
 Belki {kfiil}-mese-de {isim}-ler, {kfiil}-mese-de {isim}-ler; {isim}-ler
-$birgun, bu {isim}-ler {kfiil}-ecek, {kfiil}-ecek
+$birgun, bu {isim}-ler {kfiil}-ecek, {kfiil}-ecek.
 
 {kfiil}-meli $belkide bu {isim}-leri, {kfiil}-meli
 {kfiil}-meli {sıfat} {isim}-lerine, {sıfat} {isim}-lerine
 $belkide {sıfat} {isim}-lerini, {sıfat} {isim}-lerini {kfiil}-meli
-$yapmali {isim}-lerini, $yapmali {isim}-lerini
+$yapmali {isim}-lerini, $yapmali {isim}-lerini.
 
 MGR;
 

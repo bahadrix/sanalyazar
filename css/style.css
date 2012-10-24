@@ -1,9 +1,10 @@
 body {
     font-family: 'Dosis',Verdana,Helvetica, sans-serif;
     font-size: 1.2em;
+    line-height: 24px;
     text-align: center;
 }
 
-h1, div.siir {
+div.siir {
     text-shadow: 4px 4px 4px #eee;
 }

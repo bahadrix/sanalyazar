@@ -3,7 +3,7 @@
 $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
-<head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# delikunduz: http://ogp.me/ns/fb/delikunduz#">
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# delikunduz: http://ogp.me/ns/fb/delikunduz#">
 	<meta property="fb:app_id"      content="330427790354624" /> 
 	<meta property="og:type"        content="delikunduz:kunduzname" /> 
 	<meta property="og:url"         content="http://delikunduz.com" /> 
@@ -14,7 +14,7 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<title>sanalyazar - post modern şiir üretici</title>
 	<link href='http://fonts.googleapis.com/css?family=Dosis&subset=latin,latin-ext' rel='stylesheet' type='text/css'>
-	<link type="text/css" href="css/bootstrap.css" rel="stylesheet" />
+	<link type="text/css" href="css/bootstrap.min.css" rel="stylesheet" />
         <link type="text/css" href="css/style.css" rel="stylesheet" />
         <script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -40,16 +40,16 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
 	}(document, 'script', 'facebook-jssdk'));</script>
 
 
-</head>
+    </head>
 
-<body>
-    <h1><?php echo $baslik?></h1>
-    <div class="siir">
-        <?php echo $sacmalik; ?>
-    </div>
-    <br/><br/>
-    <div class="fb-like" data-href="http://delikunduz.com" data-send="true" data-width="450" data-show-faces="true" data-font="tahoma"></div>
-    <br/>
-    <div class="fb-comments" data-href="http://delikunduz.com" data-num-posts="20" data-width="470"></div>
-</body>
+    <body>
+        <div class="siir">
+            <h1><?php echo $baslik?></h1>
+            <?php echo $sacmalik; ?>
+        </div>
+        <br/><br/>
+        <div class="fb-like" data-href="http://delikunduz.com" data-send="true" data-width="450" data-show-faces="true" data-font="tahoma"></div>
+        <br/>
+        <div class="fb-comments" data-href="http://delikunduz.com" data-num-posts="20" data-width="470"></div>
+    </body>
 </html>
