@@ -19,8 +19,8 @@ class Lingustian {
 		return in_array($son_harf, self::$sert_unsuzler) ? substr($kelime, 0,-1) . self::$yumusayan_unsuzler[$son_harf] : $kelime;
 		
 	}
-	
-
+        
+        
 	public static function mastarKaldir($mastarliFiil) {
 		
 		return preg_replace('/m[ae]k$/', '', $mastarliFiil);
