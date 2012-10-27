@@ -1,4 +1,15 @@
-﻿<?php include_once 'config.php';
+﻿<?php
+
+/*
+ * Niye bilmiyorum pc'de denerken include 'config.php' çalışmadı. 
+ * Böyle yapınca düzeldi anca.
+ */
+define ("DEBUG_MODE", true);
+include 'dbconn.php';
+include 'firephp/fb.php';
+include 'jException.php';
+ob_start();
+
 /**
  * Veritabanı bağlantı kurulum ve erişim fonksiyonları dosyası.
  */
