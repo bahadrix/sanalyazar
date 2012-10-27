@@ -2,7 +2,7 @@
 include_once 'core/db.php';
 include_once 'core/lingustian.php';
 include_once 'wordengine.php';
-include_once 'duzenle.php';
+include_once 'funct.php';
 
 
 $we = new WordEngine();

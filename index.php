@@ -11,7 +11,6 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
         <link type="text/css" href="css/style.css" rel="stylesheet" />
         <script type="text/javascript" src="js/jquery.min.js"></script>
     </head>
-
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
