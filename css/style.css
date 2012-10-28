@@ -1,5 +1,5 @@
 body {
-    font-family: 'Dosis',Verdana,Helvetica, sans-serif;
+    font-family: 'Dosis',"HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Verdana, Helvetica, Arial, "Lucida Grande", sans-serif;
     font-size: 1.2em;
     line-height: 24px;
     text-align: center;
@@ -41,8 +41,8 @@ div.maincontainer table tr td:nth-child(even) {
 input {
     border: 1px solid #ccc; 
     -webkit-border-radius: 5px;
-       -moz-border-radius: 5px;
-            border-radius: 5px; 
+    -moz-border-radius: 5px;
+    border-radius: 5px; 
     padding: 5px 10px 5px 10px;
     margin: 5px 0 10px 0;
     font-size:10pt;
@@ -50,8 +50,8 @@ input {
 }
 
 input:hover, input:focus {
-  background-color: rgba(220,220,220,0.5);
-  color:#555;
+    background-color: rgba(220,220,220,0.5);
+    color:#555;
 }
 
 fieldset {
@@ -69,4 +69,43 @@ legend {
     font-size:24px;
     line-height:40px;
     color:#333;
+}
+
+.alertfont {
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size:11pt;
+}
+
+.loginbox {
+    position:absolute;
+    top:0;
+    left:20px;
+    margin-top:40px;
+    background-color:#fff;
+    border:2px solid #ccc;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
+    font-size:12pt;
+    height:auto;
+    text-align:center;
+    padding:10px 1px 10px 1px;
+    width:200px;
+    z-index:-1;
+    display:none;
+}
+
+hr {
+    margin:10px 0 10px 0;
+    border:0;
+    border-top:1px solid #eee;
+    border-bottom:1px solid #fff;
+}
+
+.loginbox input {
+    padding:3px;
+    margin:0;
+    width:120px;
 }

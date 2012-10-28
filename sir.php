@@ -1,4 +1,5 @@
 <?php
+
 include_once 'core/db.php';
 include_once 'core/lingustian.php';
 include_once 'wordengine.php';
@@ -7,50 +8,49 @@ include_once 'funct.php';
 
 $we = new WordEngine();
 
-$libBelkide = array (
-			'belkide',
-			'aslında',
-			'gerçektende',
-			'hiç değilse',
-			'en azından',
-			'hiç yoktan'
-		);
+$libBelkide = array(
+    'belkide',
+    'aslında',
+    'gerçektende',
+    'hiç değilse',
+    'en azından',
+    'hiç yoktan'
+);
 
 
-$libSokulan = array (
-			'giren',
-			'sokulan',
-			'soktuğum',
-			'koyduğum',
-			'verdiğim',
-			'kerttiğim'
-		
-		);
+$libSokulan = array(
+    'giren',
+    'sokulan',
+    'soktuğum',
+    'koyduğum',
+    'verdiğim',
+    'kerttiğim'
+);
 
-$gunGelecek = array (
-			'Gün gelecek',
-			'Devran dönecek',
-			'İşte o zaman',
-			'Bir gün',
-			'O geldiğinde',
-			'Yarın',
-			'Elbet bir gün'
-		);
+$gunGelecek = array(
+    'Gün gelecek',
+    'Devran dönecek',
+    'İşte o zaman',
+    'Bir gün',
+    'O geldiğinde',
+    'Yarın',
+    'Elbet bir gün'
+);
 
-$libBirBir = array (
-			'bir bir',
-			'teker teker',
-			'birer birer',
-			'peyder pey',
-			'paşa paşa'
-		);
+$libBirBir = array(
+    'bir bir',
+    'teker teker',
+    'birer birer',
+    'peyder pey',
+    'paşa paşa'
+);
 
-$hepsi = array (
-		'hepsi',
-		'bir kısmı',
-		'az birazı',
-		'azıcığı',
-		'paşa paşa'
+$hepsi = array(
+    'hepsi',
+    'bir kısmı',
+    'az birazı',
+    'azıcığı',
+    'paşa paşa'
 );
 
 shuffle($libBelkide);
@@ -68,7 +68,7 @@ $birgun = $gunGelecek[0];
 shuffle($libBirBir);
 $birbir = $libBirBir[0];
 
-$yapmali = $we->sacmala('{kfiil}-meli');	
+$yapmali = $we->sacmala('{kfiil}-meli');
 
 $baslik = $yapmali;
 
@@ -99,5 +99,4 @@ $migir = trim($migir);
 
 
 $db = getPDO();
-
 ?>

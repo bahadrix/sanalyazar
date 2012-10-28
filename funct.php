@@ -56,10 +56,10 @@ function generateSalt($input) {
     while ($i < $l) {
         $ch = substr_unicode($input, $i, 1);
         $chnumber = utf8_to_unicode($ch);
-        $ttl += pow($chnumber[0],2)/2;
+        $ttl += pow($chnumber[0], 2) / 2;
         $i++;
     }
-    $ttl = $ttl%10000;
+    $ttl = $ttl % 10000;
     return $ttl;
 }
 
@@ -101,4 +101,5 @@ function utf8_to_unicode($str) {
 
     return $unicode;
 }
+
 ?>
