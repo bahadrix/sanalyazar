@@ -1,3 +1,10 @@
+/* jQuery.ajaxQueue - A queue for ajax requests
+ * http://stackoverflow.com/questions/3034874/sequencing-ajax-requests/3035268#3035268
+ * @version 1.0  
+ */
+(function($){var ajaxQueue = $({});$.ajaxQueue = function( ajaxOpts ) {var jqXHR,dfd = $.Deferred(),promise = dfd.promise();ajaxQueue.queue( doRequest );promise.abort = function( statusText ) {if ( jqXHR ) {return jqXHR.abort( statusText );}var queue = ajaxQueue.queue(),index = $.inArray( doRequest, queue );if ( index > -1 ) {queue.splice( index, 1 );}dfd.rejectWith( ajaxOpts.context || ajaxOpts,[ promise, statusText, "" ] );return promise;};function doRequest( next ) {jqXHR = $.ajax( ajaxOpts ).then( next, next ).done( dfd.resolve ).fail( dfd.reject );}return promise;};})(jQuery);
+/* ajaxQueue bitti */
+
 /*
  * sanalyazar kısmı
  * @version 0.01
@@ -13,6 +20,7 @@ $(document).on('reset','#register',function() {
 });
 
 $(document).on('submit', '#register', function(e) {
+    e.preventDefault();
     $('input[name="sbmt"]').attr("disabled","disabled");
     $('input[name="sbmt"]').addClass('disabled');
     setTimeout('submitDuzelt()', 5000);
@@ -114,13 +122,15 @@ $(document).on('submit', '#register', function(e) {
             $soyad.focus();
     }
     /* hataları ekle bitti */
-    if (err) //hata varsa gönderme
-        e.preventDefault();
+    if (!err) //hata yoksa gönder
+        $(this).unbind('submit').submit();
 });
 /* üye ol validation kısmı bitti */
 
 /* kullanıcı girişi validation */
-$(document).on('submit','form[name="loginform"]:visible',function(e) {
+$(document).on('submit','form[name="loginform"]',function(e) {
+    e.stopPropagation();
+    e.preventDefault();
     $('input[name="loginsubmit"]').attr("disabled","disabled");
     $('input[name="loginsubmit"]').addClass('disabled');
     setTimeout('submitDuzelt()', 5000);
@@ -128,18 +138,30 @@ $(document).on('submit','form[name="loginform"]:visible',function(e) {
     var $k = $('input[name="kuladi"]'),
         $s = $('input[name="parola"]');
     if (!$k.val() || !$s.val()) {
-        e.preventDefault();
-        if ($(this).find('span[class="label label-warning"]').length === 0)
-            $(this).append('<span class="label label-warning">Bütün alanlar doldurulmalı.</span>');
+        $(this).append('<span class="label label-warning">Bütün alanlar doldurulmalı.</span>');
     }
-    //ajaxla kontroller daha sonra.
-    //$(this).unbind('submit').submit()
+    else {
+        $.ajaxQueue({
+            url: 'login.php',
+            type: 'POST',
+            dataType: 'html',
+            data: $(this).serialize(),
+            success: function(data) {
+                if (data === 'OK') {
+                    location.reload(true);
+                }
+                else {
+                    $('form[name="loginform"]').append(data);
+                }
+            }
+        });
+    }
 });
 /* kullanıcı girişi validation bitti */
 
 $(document).on('click','.girisyap', function() {
-    var $l = $(".loginbox");
-    if (!$l.is(":visible")) {
+    var $l = $('.upperbox');
+    if (!$l.is(':visible')) {
         $l.fadeIn(100).focus();
     }
     else {

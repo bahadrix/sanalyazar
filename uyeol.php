@@ -1,13 +1,10 @@
 <?php
 include_once 'ust.php';
 ?>
+
 <div class="maincontainer">
     <?php
     $uyeoldu = false; //formu tekrar gösterelim mi? false = evet.
-    $nick = "";
-    $ad = "";
-    $soyad = "";
-    $email = "";
     if (!empty($_POST['nick']) && !empty($_POST['sifre']) && !empty($_POST['sifret']) && !empty($_POST['email']) && !empty($_POST['isim']) && !empty($_POST['soyisim'])) {
         $nick = $_POST['nick'];
         $sifre = $_POST['sifre'];
@@ -52,7 +49,7 @@ include_once 'ust.php';
                 else {
                     $salt = generateSalt($nick . $ad . $soyad);
                     $sifreh = hash('sha256', $sifre . $salt);
-                    $uyeet = $dblink->prepare('INSERT INTO uye (sifre,nick,ad,soyad,email,tarih) VALUES (:sifreh,:nick,:ad,:soyad,:email,NOW())');
+                    $uyeet = $dblink->prepare('INSERT INTO uye (sifre,nick,ad,soyad,email,tarih,aktif) VALUES (:sifreh,:nick,:ad,:soyad,:email,NOW(),1)'); //aktif şimdilik 1
                     $uyeet->bindValue(':sifreh', $sifreh);
                     $uyeet->bindValue(':nick', $nick);
                     $uyeet->bindValue(':ad', $ad);
@@ -67,7 +64,7 @@ include_once 'ust.php';
                             print_r($uyeet->errorInfo());
                             echo "<br />";
                         }
-                        echo 'Hata oluştu. Lütfen tekrar deneyin';
+                        echo 'Hata oluştu. Lütfen tekrar deneyin.';
                     }
                 }
             }

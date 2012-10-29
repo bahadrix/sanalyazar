@@ -76,10 +76,9 @@ legend {
     font-size:11pt;
 }
 
-.loginbox {
+.upperbox {
     position:absolute;
     top:0;
-    left:20px;
     margin-top:40px;
     background-color:#fff;
     border:2px solid #ccc;
@@ -92,9 +91,18 @@ legend {
     height:auto;
     text-align:center;
     padding:10px 1px 10px 1px;
-    width:200px;
     z-index:-1;
     display:none;
+}
+
+.loginbox {
+    left:20px;
+    width:200px;
+}
+
+.userbox {
+    left:80px;
+    width:150px;
 }
 
 hr {
