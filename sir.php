@@ -1,10 +1,8 @@
 <?php
 
-include_once 'core/db.php';
+include_once 'core/db.php'; // ust.php'siz sayfalara include edilirse diye.
 include_once 'core/lingustian.php';
 include_once 'wordengine.php';
-include_once 'funct.php';
-
 
 $we = new WordEngine();
 
@@ -34,7 +32,8 @@ $gunGelecek = array(
     'Bir gün',
     'O geldiğinde',
     'Yarın',
-    'Elbet bir gün'
+    'Elbet bir gün',
+    'O gelecek'
 );
 
 $libBirBir = array(
