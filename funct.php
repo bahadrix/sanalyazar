@@ -44,7 +44,6 @@ function unistrlen($inp) {
     /**
      * ASCII hariç karakter içeren input'ların uzunluğunu döndürür.
      */
-    $i = 0;
     $chars = preg_split('//u', $inp, -1, PREG_SPLIT_NO_EMPTY);
     return count($chars);
 }
