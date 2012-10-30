@@ -40,7 +40,7 @@ class Lingustian {
         $son_harf = self::sub_uni($yenikelime, -1);
 
         if (in_array($son_harf, self::$unluler)) {
-            if (!preg_match('/^[a-zığçüöşâî]+(?:\s[a-zığçüöşâî]+)*(?:\s[a-zığçüöşâî]+[iı])$/i', $kelime)) //isim tamlaması değilse dön
+            if (!preg_match('/^[a-zığçüöşâî]+(?:\s[a-zığçüöşâî]+)*(?:\s[a-zığçüöşâî]+[iıuü])$/i', $kelime)) //isim tamlaması değilse dön
                 if ($si)
                     return $yenikelime . $ek;
                 else
@@ -77,7 +77,7 @@ class Lingustian {
             $isim_tamlamasimi = preg_match('/^[a-zığçüöşâî]+(?:\s[a-zığçüöşâî]+)+$/i', $kelime);
             if ($isim_tamlamasimi) {
                 return $kelime . "n";
-            } else if ($sondan_onceki_harf == "ğ" || $sondan_onceki_harf == "y" || $sondan_onceki_harf == "s") {
+            } else if ($sondan_onceki_harf == "ğ" || $sondan_onceki_harf == "y" || $sondan_onceki_harf == "s" || $sondan_onceki_harf == 'ş') {
                 return $kelime . "n";
             }
             else
@@ -125,7 +125,7 @@ class Lingustian {
 
         $ek = "";
         if ($son_unlu_genis) {
-            if ($son_unlu == 'o' || $son_unlu = 'â')
+            if ($son_unlu == 'o' || $son_unlu == 'â')
                 $ek = 'a';
             elseif ($son_unlu == "ö" || $son_unlu == 'î')
                 $ek = 'e';
