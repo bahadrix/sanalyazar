@@ -33,31 +33,24 @@ include_once 'funct.php';
                             <hr />
                             <a href="sifre.php">Şifremi Unuttum</a>
                         </div>
-                            <?php } else { ?>
-                        <div class="upperbox userbox">
-                            <p style="color:#333;"><?php echo $MEMBER->nick; ?></p><hr /><p style="text-align:left; padding:0; padding-left:25px; margin:0;"><a href="hq.php">Kullanıcı Bilgileri</a><br /><a href="yeni.php">Mıgır Yarat</a><br /><a href="login.php?logout">Çıkış</a></p>
-                        </div>
-                            <?php } ?>
-                        <?php
-                        if ($MEMBER_LOGGED) {
-                        ?>
-                        <li>
-                            <a href="uyeol.php">kaydettiklerim</a> <?php //placeholder, başka şeyler eklenebilir. ?>
-                        </li> 
-                        <li>
-                            <a class="dropdown girisyap" href="javascript:void(0);">ben<b class="caret"></b></a>
-                        </li>                                               
-                        <?php 
-                        }
-                        else {
-                        ?>                        
                         <li>
                             <a href="uyeol.php">üye ol</a>
                         </li>
                         <li>
                             <a class="dropdown girisyap" href="javascript:void(0);">giriş yap<b class="caret"></b></a>
                         </li>
-                        <?php } ?>
+                            <?php } else { ?>
+                        <div class="upperbox userbox">
+                            <p style="color:#333;"><i class="icon-user"></i><?php echo $MEMBER->nick; ?></p><hr /><p style="text-align:left; padding:0; padding-left:25px; margin:0;"><a href="hq.php">Kullanıcı Bilgileri</a><br /><a href="yeni.php">Mıgır Yarat</a><br /><a href="login.php?logout">Çıkış</a></p>
+                        </div>
+                        
+                        <li>
+                            <a href="uyeol.php">kaydettiklerim</a> <?php //placeholder, başka şeyler eklenebilir. ?>
+                        </li> 
+                        <li>
+                            <a class="dropdown girisyap" href="javascript:void(0);">ben <b class="caret"></b></a>
+                        </li>
+                            <?php } ?>
                     </ul>
                 </div>
             </div>
