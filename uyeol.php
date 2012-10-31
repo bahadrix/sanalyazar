@@ -22,10 +22,10 @@ include_once 'ust.php';
             $emailErr = 'Geçersiz email adresi';
 
         if (!preg_match('/^(?:[A-ZIÇÖŞÜ][a-zıçöğşü]+\s*)+$/', $ad))
-            $adErr = 'İsim sadece harf ve boşluk içerebilir<br />&nbsp;Baş harfler büyük olmalıdır.';
+            $adErr = 'İsim sadece harf ve boşluk içerebilir<br />Baş harfler büyük olmalıdır.';
 
-        if (!preg_match('/^(?:[A-ZIÇÖŞÜ][a-zıçöğşü]+)$/', $soyad))
-            $soyadErr = 'Soyisim sadece harf içerebilir<br />&nbsp;Baş harfler büyük olmalıdır.';
+        if (!preg_match('/^(?:[A-ZIÇÖŞÜ][a-zıçöğşü]+\s*)+$/', $soyad))
+            $soyadErr = 'Soyisim sadece harf içerebilir<br />Baş harfler büyük olmalıdır.';
 
         if ($sifret != $sifre)
             $sifretErr = "Şifreler aynı olmalı";
@@ -84,10 +84,10 @@ include_once 'ust.php';
             $emailErr = 'Geçersiz email adresi';
 
         if (!preg_match('/^(?:[A-ZIÇÖŞÜ][a-zıçöğşü]+\s*)+$/', $ad))
-            $adErr = 'İsim sadece harf ve boşluk içerebilir<br />&nbsp;Baş harfler büyük olmalıdır.';
+            $adErr = 'İsim sadece harf ve boşluk içerebilir<br />Baş harfler büyük olmalıdır.';
 
-        if (!preg_match('/^(?:[A-ZIÇÖŞÜ][a-zıçöğşü]+)$/', $soyad))
-            $soyadErr = 'Soyisim sadece harf içerebilir<br />&nbsp;Baş harfler büyük olmalıdır.';
+        if (!preg_match('/^(?:[A-ZIÇÖŞÜ][a-zıçöğşü]+\s*)+$/', $soyad))
+            $soyadErr = 'Soyisim sadece harf içerebilir<br />Baş harfler büyük olmalıdır.';
     }
     if (!$uyeoldu) {
         ?>
@@ -121,8 +121,8 @@ include_once 'ust.php';
                         <td><input type="text" name="soyisim" maxlength="30" size="50" <?php if (!empty($soyad)) { ?>value="<?php echo $soyad; ?>" <?php } ?> /><?php if (!empty($soyadErr)) { ?><span class="label label-important"><?php echo $soyadErr ?></span><?php } ?>
                     </tr>
                     <tr>
-                        <td><input type="submit" value="Üye Ol" name="sbmt" /></td>
-                        <td><input type="reset" value="Temizle" />
+                        <td><input type="submit" value="Üye Ol" name="sbmt" class="btn btn-info btn-small" /></td>
+                        <td><input type="reset" value="Temizle" class="btn btn-small" />
                     </tr>
                 </table>
             </fieldset>
