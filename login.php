@@ -7,6 +7,14 @@
  * 
  * Bi ara brute force önlemi alınmalı
  * 
+ * Brute Force Implementation:
+ * - Veritabanında failedlogin tablosu oluştur.
+ * - uid, IP, tarih tut.
+ * - login geldiğinde son 20 dakika içinde olan failedlogin'leri say.
+ *   Eğer failedlogin 5'ten fazlaysa logincaptcha.php'ye yönlendir ve kullanıcıya bir $_SESSION['failedLogin'] = true yolla.
+ * - $_SESSION['failedLogin'] olduğu sürece sayfa üstünden (giriş yap kısmından) login'e izin verme. ust.php'ye implement edilecek. 
+ * - Login olursa $_SESSION['failedLogin']'ı kaldır. 
+ * 
  * O an görünen şiiri kaydetme özelliği eklenecek.
  * 
  * @version 0.1 

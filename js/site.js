@@ -1,8 +1,15 @@
-/* jQuery.ajaxQueue - A queue for ajax requests
+/*
+ * jQuery.ajaxQueue - A queue for ajax requests
+ * 
+ * (c) 2011 Corey Frang
+ * Dual licensed under the MIT and GPL licenses.
+ *
  * http://stackoverflow.com/questions/3034874/sequencing-ajax-requests/3035268#3035268
- * @version 1.0  
+ * http://gnarf.net/2011/06/21/jquery-ajaxqueue/
+ * 
+ * Requires jQuery 1.5+
  */
-(function($){var ajaxQueue = $({});$.ajaxQueue = function( ajaxOpts ) {var jqXHR,dfd = $.Deferred(),promise = dfd.promise();ajaxQueue.queue( doRequest );promise.abort = function( statusText ) {if ( jqXHR ) {return jqXHR.abort( statusText );}var queue = ajaxQueue.queue(),index = $.inArray( doRequest, queue );if ( index > -1 ) {queue.splice( index, 1 );}dfd.rejectWith( ajaxOpts.context || ajaxOpts,[ promise, statusText, "" ] );return promise;};function doRequest( next ) {jqXHR = $.ajax( ajaxOpts ).then( next, next ).done( dfd.resolve ).fail( dfd.reject );}return promise;};})(jQuery);
+(function(a){var b=a({});a.ajaxQueue=function(c){function g(b){d=a.ajax(c).done(e.resolve).fail(e.reject).then(b,b)}var d,e=a.Deferred(),f=e.promise();b.queue(g),f.abort=function(h){if(d)return d.abort(h);var i=b.queue(),j=a.inArray(g,i);j>-1&&i.splice(j,1),e.rejectWith(c.context||c,[f,h,""]);return f};return f}})(jQuery)
 /* ajaxQueue bitti */
 
 /*
@@ -20,7 +27,6 @@ $(document).on('reset','#register',function() {
 });
 
 $(document).on('submit', '#register', function(e) {
-    e.preventDefault();
     $('input[name="sbmt"]').attr("disabled","disabled");
     $('input[name="sbmt"]').addClass('disabled');
     setTimeout('submitDuzelt()', 5000);
@@ -122,8 +128,8 @@ $(document).on('submit', '#register', function(e) {
             $soyad.focus();
     }
     /* hataları ekle bitti */
-    if (!err) //hata yoksa gönder
-        $(this).unbind('submit').submit();
+    if (err) //hata yoksa gönder
+        e.preventDefault();
 });
 /* üye ol validation kısmı bitti */
 
