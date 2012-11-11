@@ -1,8 +1,8 @@
 <?php
 ob_start();
 include_once 'core/db.php';
-include_once 'uyekontrol.php';
 include_once 'funct.php';
+include_once 'uyekontrol.php';
 ?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>	
@@ -41,7 +41,7 @@ include_once 'funct.php';
                         </li>
                             <?php } else { ?>
                         <div class="upperbox userbox">
-                            <p style="color:#333;"><i class="icon-user"></i><?php echo $MEMBER->nick; ?></p><hr /><p style="text-align:left; padding:0; padding-left:25px; margin:0;"><a href="hq.php">Kullanıcı Bilgileri</a><br /><a href="yeni.php">Mıgır Yarat</a><br /><a href="login.php?logout">Çıkış</a></p>
+                            <p style="color:#333;"><i class="icon-user"></i><?php echo $MEMBER->nick; ?></p><hr /><p style="text-align:left; padding:0; padding-left:25px; margin:0;"><a href="hq.php">Kullanıcı Bilgileri</a><br /><a href="yeni.php">Şablon Yarat</a><br /><a href="login.php?logout">Çıkış</a></p>
                         </div>
                         
                         <li>

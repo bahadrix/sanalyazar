@@ -1,9 +1,10 @@
 <?php
-
+/**
+ * Cümle başlarını büyük yapar, geri kalan harfleri küçültür.
+ * @param type $migir
+ * @return type
+ */
 function migirDuzelt($migir) {
-    /**
-     * cümle başlarını büyük yapar ve geriye kalan harfleri küçültür.
-     */
     $migir = mb_convert_case($migir, MB_CASE_LOWER, 'UTF-8');
     $ilkkarakter = substr_unicode($migir, 0, 1);
     if (turkcekarakter($ilkkarakter)) {
@@ -47,7 +48,11 @@ function unistrlen($inp) {
     $chars = preg_split('//u', $inp, -1, PREG_SPLIT_NO_EMPTY);
     return count($chars);
 }
-
+/**
+ * Generates number Salt for registration
+ * @param type $input
+ * @return type
+ */
 function generateSalt($input) {
     $l = unistrlen($input);
     $i = 0;
@@ -60,6 +65,19 @@ function generateSalt($input) {
     }
     $ttl = $ttl % 10000;
     return $ttl;
+}
+/**
+ * Session ID sniff Prevention.
+ * @return string
+ */
+function generateRandomString() {
+    $length = 15;
+    $characters = "0123456789abcdefghijklmnopqrstuvwxyz";
+    $str = "";
+    for ($i = 0; $i<$length;$i++) {
+        $str .= $characters[mt_rand(0,strlen($characters)-1)];
+    }
+    return $str;
 }
 
 /*

@@ -42,16 +42,34 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $salt = generateSalt($uye->nick . $uye->ad . $uye->soyad);
             $hash = hash('sha256', $parola . $salt);
             if ($uye->sifre != $hash) {
-                echo '<span class="label label-warning">Yanlış şifre.</span>';
+                echo '<span class="label label-warning">Yanlış kullanıcı adı veya şifre.</span>';
             } else {
                 $upd = $link->prepare('UPDATE uye SET son_online = NOW() WHERE uid = :uid');
                 $upd->bindValue(':uid', $uye->uid);
                 $upd->execute();
 
+                session_regenerate_id();
                 session_cache_expire(30);
                 session_start();
                 $_SESSION['logged'] = true;
                 $_SESSION['uye'] = $uye;
+                
+                /*
+                 * Kullanıcı için unique, IP adresi ve tarayıcıdan oluşan bir
+                 * imza yarat. Kullanıcı girişi yapmış kullanıcıların 
+                 * authentication'ında kullanılıcak. Başka IP adresi veya
+                 * tarayıcıyla girmeye çalışan bir session'ın invalid olduğunu
+                 * anlamamızı sağlayacak.
+                 */
+                $str = generateRandomString();
+                $ref = $_SERVER["REMOTE_ADDR"];
+                $agent = $_SERVER["HTTP_USER_AGENT"];
+                $hashed = hash("sha256",$ref . $str . $agent);
+                $saltedhash = $str . $hashed;
+                $_SESSION['signature'] = $saltedhash;
+                
+                $_SESSION['son_islem'] = time();
+
                 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
                     echo "OK"; //sayfayı javascriptten yenile.
                 }
@@ -63,6 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 else if (isset($_REQUEST['logout'])) {
     session_start();
+    session_unset();
     session_destroy();
     header("Location: index.php?act=logged_out");
 }
