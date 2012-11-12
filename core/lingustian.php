@@ -25,8 +25,8 @@ class Lingustian {
      */
     public static function lerlar($kelime, $ek, $si = false) {
         
-        $digerleri = array('ler' => 'lar', 'leri' => 'ları', 'lerin' => 'ların', 'lerini' => 'larını', 'lerinin' => 'larının');
-        $ekler = array('ler' => 'i', 'leri' => '', 'lerin' => 'in', 'lerini' => '', 'lerinin' => '');
+        $digerleri = array('ler' => 'lar', 'leri' => 'ları', 'lerin' => 'ların', 'lerini' => 'larını', 'lerine' => 'larına', 'lerinin' => 'larının');
+        $ekler = array('ler' => 'i', 'leri' => '', 'lerin' => 'in', 'lerini' => '', 'lerine'  => '', 'lerinin' => '');
         $eklerdaral = array('i' => 'ı', 'in' => 'ın');
 
         $yenikelime = $kelime;
@@ -59,8 +59,11 @@ class Lingustian {
                 }
                 if ($si)
                     $yenikelime .= $ek . $ekler[$ek];
-                else
-                    $yenikelime .= $digerleri[$ek] . $eklerdaral[$ekler[$ek]];
+                else {
+                    $yenikelime .= $digerleri[$ek];
+                    if (in_array($ekler[$ek],$eklerdaral))
+                            $yenikelime .=  $eklerdaral[$ekler[$ek]];
+                }
                 return $yenikelime;
             }
         }

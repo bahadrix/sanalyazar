@@ -112,10 +112,10 @@ class Sozcuk {
 			case '-den':			return $kelime . ($si ? 'den' : 'dan'); 
 			
 			case '-ler': 			return Lingustian::lerlar($kelime,'ler',$si); //return $kelime . ($si ? 'ler' : 'lar'); 
-			case '-leri': 			return $kelime . ($si ? 'leri' : 'ları');
+			case '-leri': 			return Lingustian::lerlar($kelime,'leri',$si); //return $kelime . ($si ? 'leri' : 'ları');
 			case '-lerin': 			return Lingustian::lerlar($kelime,'lerin',$si); //return $kelime . ($si ? 'lerin' : 'ların');
-			case '-lerini': 		return $kelime . ($si ? 'lerini' : 'larını');
-			case '-lerine': 		return $kelime . ($si ? 'lerine' : 'larına');
+			case '-lerini': 		return Lingustian::lerlar($kelime,'lerini',$si); //return $kelime . ($si ? 'lerini' : 'larını');
+			case '-lerine': 		return Lingustian::lerlar($kelime,'lerine',$si); //return $kelime . ($si ? 'lerine' : 'larına');
 			
 			case '-en': 			return $kelime . ($si ?  "en" : "an");
 			case '-me':				return $kelime . ($si ? "me" : "ma");
