@@ -96,8 +96,8 @@ else {
     if (!$uyeoldu) {
         ?>
         <form action="uyeol.php" id="register" method="post">
-            <fieldset>
-                <legend>Üye Ol</legend>
+            <fieldset class="uyefs">
+                <legend class="uyelegend">Üye Ol</legend>
                 <span class="alert alert-info alertfont"><strong>Uyarı!</strong> Bütün alanların doldurulması zorunludur.</span>
                 <table id="uyetablo">
                     <tr>

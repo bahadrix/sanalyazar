@@ -10,6 +10,7 @@ else {
                 <li class="active"><a href="#bilgi">bilgilerim</a></li>
                 <li><a href="#sablon">şablonlarım</a></li>
                 <li><a href="#encokoy">en çok oy alanlarım</a></li>
+                <li><a href="#oyverdigim">oy verdiklerim</a></li>
                 <li>vb</li>
             </ul>        
         </div>
@@ -43,7 +44,7 @@ else {
                     </tr>
                 </table>
                 <hr />
-                <input type="submit" class="btn btn-mini btn-success" name="degistir" value="Düzenle" />
+                <input type="submit" class="btn btn-mini btn-success" name="degistir" value="Değiştir" />
             </form>
         </div>
     </div>

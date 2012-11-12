@@ -61,7 +61,7 @@ class Lingustian {
                     $yenikelime .= $ek . $ekler[$ek];
                 else {
                     $yenikelime .= $digerleri[$ek];
-                    if (in_array($ekler[$ek],$eklerdaral))
+                    if (in_array($ekler[$ek],array_flip($eklerdaral)))
                             $yenikelime .=  $eklerdaral[$ekler[$ek]];
                 }
                 return $yenikelime;

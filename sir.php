@@ -22,6 +22,8 @@ $libSokulan = array(
     'soktuğum',
     'koyduğum',
     'verdiğim',
+    'yaptığım',
+    'yapılan',
     'kerttiğim'
 );
 
