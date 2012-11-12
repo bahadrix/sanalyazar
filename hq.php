@@ -49,4 +49,5 @@ else {
     </div>
     <?php
 }
+include_once 'alt.php';
 ?>

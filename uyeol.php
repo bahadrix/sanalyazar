@@ -1,5 +1,9 @@
 <?php
 include_once 'ust.php';
+if ($MEMBER_LOGGED) {
+    header("Location: index.php");
+}
+else {
 ?>
 
 <div class="maincontainer">
@@ -132,5 +136,6 @@ include_once 'ust.php';
     ?>
 </div>
 <?php
+}
 include_once 'alt.php';
 ?>
