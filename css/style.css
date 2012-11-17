@@ -31,17 +31,10 @@ input[type="color"],
 }
 
 fieldset {
-    border:1px solid #000;
+    border:1px solid #c0c0c0;
     width:600px;
     margin-left:auto;
     margin-right:auto;
-}
-
-fieldset.uyefs {
-    background-color:#f9f9f9;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
 }
 
 legend {
@@ -50,13 +43,6 @@ legend {
     border:0;
 }
 
-legend.uyelegend {
-    background-color:#fff;
-    border:1px solid #ddd;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
-}
 /* END OF BOOTSTRAP OVERRIDES */
 
 div.maincontainer {
@@ -113,6 +99,20 @@ input:hover, input:focus {
     font-size:11pt;
 }
 
+fieldset.uyefs {
+    background-color:#f9f9f9;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+legend.uyelegend {
+    background-color:#fff;
+    border:1px solid #ddd;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
 .upperbox {
     position:absolute;
     top:0;
@@ -122,8 +122,9 @@ input:hover, input:focus {
     -webkit-border-radius: 8px;
     -moz-border-radius: 8px;
     border-radius: 8px;
-    -webkit-box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
-    box-shadow: 0px 2px 3px 0px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+    -moz-box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
+    box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.3);
     font-size:12pt;
     height:auto;
     text-align:center;
@@ -180,7 +181,7 @@ hr {
     -webkit-border-top-left-radius:7px;
     -moz-border-radius-topright:7px;
     -webkit-border-top-right-radius:7px;
-    border:1px solid black;
+    border:1px solid #c0c0c0;
     border-bottom:1px solid #f9f9f9;
     padding:2px 15px;
     z-index:3;
@@ -195,7 +196,7 @@ hr {
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
-    border:1px solid black;
+    border:1px solid #c0c0c0;
     position:absolute;
     width:940px;
     top:124.5px;
