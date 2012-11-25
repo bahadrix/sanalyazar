@@ -7,17 +7,8 @@
  * 
  * Bi ara brute force önlemi alınmalı
  * 
- * Brute Force Implementation:
- * - Veritabanında failedlogin tablosu oluştur.
- * - uid, IP, tarih tut.
- * - login geldiğinde son 20 dakika içinde olan failedlogin'leri say.
- *   Eğer failedlogin 5'ten fazlaysa logincaptcha.php'ye yönlendir ve kullanıcıya bir $_SESSION['failedLogin'] = true yolla.
- * - $_SESSION['failedLogin'] olduğu sürece sayfa üstünden (giriş yap kısmından) login'e izin verme. ust.php'ye implement edilecek. 
- * - Login olursa $_SESSION['failedLogin']'ı kaldır. 
  * 
- * O an görünen şiiri kaydetme özelliği eklenecek.
- * 
- * @version 0.1 
+ * @version 0.2 
  */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST['kuladi']) || empty($_POST['parola'])) {
@@ -53,7 +44,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 session_start();
                 $_SESSION['logged'] = true;
                 $_SESSION['uye'] = $uye;
-                
+
                 /*
                  * Kullanıcı için unique, IP adresi ve tarayıcıdan oluşan bir
                  * imza yarat. Kullanıcı girişi yapmış kullanıcıların 
@@ -64,11 +55,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $str = generateRandomString();
                 $ref = $_SERVER["REMOTE_ADDR"];
                 $agent = $_SERVER["HTTP_USER_AGENT"];
-                $hashed = hash("sha256",$ref . $str . $agent);
+                $hashed = hash("sha256", $ref . $str . $agent);
                 $saltedhash = $str . $hashed;
                 $_SESSION['signature'] = $saltedhash;
-                
+
                 $_SESSION['son_islem'] = time();
+
+                $kaydet = false;
+                if (!empty($_POST['skaydet']) && $_POST['skaydet'] === "on") {
+                    $yazi = $_POST['ksiir'];
+                    $baslik = $_POST['baslik'];
+                    $kaydet = true;
+                    //veritabanına kod girişini önleme çabaları:
+                    if (!preg_match('/^[a-zçöğüşıâî\-]+$/i', $baslik) || !preg_match('/^(?:[a-zİÇÖĞÜŞıçöğüşâî\-,\.; ]+(?:\<br \/\>)*)+$/i',$yazi)) {
+                        $kaydet = false;
+                    }
+                    if ($kaydet) {
+                        $siirekle = $db->prepare('INSERT INTO kaydedilenler (kayit,tarih,uid,baslik) VALUES (:kayit,NOW(),:uid,:baslik)');
+                        $siirekle -> bindValue(':kayit',$yazi);
+                        $siirekle -> bindValue(':uid',$_SESSION['uye']->uid);
+                        $siirekle -> bindValue(':baslik',$baslik);
+                        $siirekle -> execute();
+                        $getsid = $db -> prepare('SELECT kid FROM kaydedilenler WHERE uid = :uid ORDER BY tarih DESC');
+                        $getsid -> bindValue(':uid',$_SESSION['uye']->uid);
+                        $getsid -> execute();
+                        $sid = $getsid->fetch(PDO::FETCH_OBJ)->kid;
+                    }
+                }
 
                 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
                     echo "OK"; //sayfayı javascriptten yenile.
