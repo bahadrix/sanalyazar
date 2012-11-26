@@ -32,6 +32,7 @@ include_once 'ust.php';
             $randomyazi->bindValue(':kid', $id);
             $randomyazi->execute();
             if ($randomyazi->rowCount() === 0) {
+                $gecersizid = true; // gösterme kısmına ilerlemesin.
                 echo "Bu id ile kayıtlı şiir bulunamadı.";
             } else {
                 $siir = $randomyazi->fetch(PDO::FETCH_ASSOC);
@@ -75,8 +76,12 @@ include_once 'ust.php';
                     ?>
                     <li><?php echo '<a href="oy.php?id='.$siir['kid'].'" title="olmuş bu"><img src="img/tu.png" /></a>'?></li>
                     <li><?php echo '<a href="oy.php?id='.$siir['kid'].'" title="böyle olmaz"><img src="img/td.png" style="margin-top:10px;" /></a>'?></li>
+                    <?php 
+                    if ($MEMBER->uid === $siir['uid']) {
+                    ?>
                     <li><?php echo '<a href="sil.php?id='.$siir['kid'].'" title="bu olmamış ya sil bunu"><img src="img/thrashm.png" /></a>'?></li>
                     <?php
+                    }
                     }
                     ?>
                 </ul>
