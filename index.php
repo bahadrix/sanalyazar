@@ -30,16 +30,15 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
                             <div class="upperbox loginbox">
                                 <p style="color:#333;">Giriş</p>
                                 <form action="login.php" method="post" name="loginform">
-                                    <div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span><input name="kuladi" type="text" maxlength="25" placeholder="kullanıcı adı" /></div>
-                                    <div class="input-prepend"><span class="add-on"><i class="icon-lock"></i></span><input name="parola" type="password" maxlength="30" placeholder="şifre" /></div>
+                                    <div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span><input name="kuladi" type="text" maxlength="25" placeholder="kullanıcı adı" style="height:30px;" /></div>
+                                    <div class="input-prepend"><span class="add-on"><i class="icon-lock"></i></span><input name="parola" type="password" maxlength="30" placeholder="şifre" style="height:30px;" /></div>
                                     <?php
-                                      /*$currentFile = $_SERVER["PHP_SELF"];
+                                    /* $currentFile = $_SERVER["PHP_SELF"];
                                       $parts = Explode('/', $currentFile);
                                       $page = $parts[count($parts) - 1];
-                                      if ($page == "index.php")*/
-                                      echo '<label class="checkbox" style="text-align:left;"><input type="checkbox" name="skaydet"><span style="margin-left:-50px;padding-top:-20px;">Kaydet?</span></label>';
-                                      echo '<input type="hidden" value="'.$sacmalik.'" name="ksiir" /><input type="hidden" value="'.$baslik.'" name="baslik" />';
-                                     
+                                      if ($page == "index.php") */
+                                    echo '<label class="checkbox" style="text-align:left;"><div class="tipbox sakla">Şu an görünen şiiri kaydetmek için bu kutuyu işaretleyin.</div><input type="checkbox" name="skaydet"><span style="margin-left:-50px;padding-top:-20px;">Kaydet?</span></label>';
+                                    echo '<input type="hidden" value="' . $sacmalik . '" name="ksiir" /><input type="hidden" value="' . $baslik . '" name="baslik" />';
                                     ?>
                                     <input type="submit" name="loginsubmit" value="Gir" class="btn btn-mini" /><br /><br />
                                 </form>
@@ -54,9 +53,9 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
                             </li>
                         <?php } else { ?>
                             <div class="upperbox userbox">
-                                <p style="color:#333;"
-                                   ><i class="icon-user"></i>
-                                       <?php echo $MEMBER->nick; ?>
+                                <p style="color:#333;">
+                                    <i class="icon-user"></i>
+                                    <?php echo $MEMBER->nick; ?>
                                 </p>
                                 <hr />
                                 <p style="text-align:left; padding:0; padding-left:25px; margin:0;">
@@ -67,7 +66,7 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
                             </div>
 
                             <li>
-                                <a href="uyeol.php">kaydettiklerim</a> <?php //placeholder, başka şeyler eklenebilir.     ?>
+                                <a href="uyeol.php">kaydettiklerim</a> <?php //placeholder, başka şeyler eklenebilir.      ?>
                             </li> 
                             <li>
                                 <a class="dropdown girisyap" href="javascript:void(0);">ben <b class="caret"></b></a>

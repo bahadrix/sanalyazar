@@ -174,3 +174,10 @@ $(document).on('click','.girisyap', function() {
        $l.fadeOut(100); 
     }
 });
+
+$(document).on("mouseenter","label[class='checkbox']",function() {
+   $(this).find('.tipbox').show(); 
+});
+$(document).on("mouseleave","label[class='checkbox']",function() {
+   $(this).find('.tipbox').hide(); 
+});

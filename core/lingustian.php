@@ -47,12 +47,18 @@ class Lingustian {
                     return $yenikelime . $digerleri[$ek];
             else {
                 $sondan_onceki_harf = self::sub_uni($kelime, -2, 1);
+                
                 if ($sondan_onceki_harf === "s") {
                     $yenikelime = self::sub_uni($yenikelime, 0, -2);
                 } else {
                     $yenikelime = self::sub_uni($yenikelime, 0, -1);
                 }
+                $yeni_sondan_onceki_harf = self::sub_uni($yenikelime, -2, 1);
                 $yeni_son_harf = self::sub_uni($yenikelime, -1);
+                
+                if ($yeni_son_harf === $yeni_sondan_onceki_harf) //"isim hakkı" gibi kelimeler için
+                    $yenikelime = self::sub_uni($yenikelime, 0, -1);
+                
                 $sertlesen_unsuzler = array_flip(self::$yumusayan_unsuzler);
                 if (in_array($yeni_son_harf, self::$yumusayan_unsuzler)) {
                     $yenikelime = self::sub_uni($yenikelime, 0, -1) . $sertlesen_unsuzler[$yeni_son_harf];
@@ -128,12 +134,15 @@ class Lingustian {
 
         $ek = "";
         if ($son_unlu_genis) {
-            if ($son_unlu == 'o' || $son_unlu == 'â')
+            if ($son_unlu == 'o' || $son_unlu == 'â') {
                 $ek = 'a';
-            elseif ($son_unlu == "ö" || $son_unlu == 'î')
+            }
+            else if ($son_unlu == "ö" || $son_unlu == 'î') {
                 $ek = 'e';
-            else
+            }
+            else {
                 $ek = $son_unlu;
+            }
         } else if ($son_unlu_dar) { // darsa genislet
             if ($son_unlu == 'u')
                 $ek = 'a';
@@ -149,7 +158,7 @@ class Lingustian {
 
     public static function sonUnluNe($kelime) {
 
-        $index = 0;
+        $index = -1;
         $son_unlu = "";
         foreach (self::$unluler as $unlu) {
 

@@ -79,7 +79,7 @@ $gun_gelecek {isim}-ler $birbir {kfiil}-ecek
 {isim}-e $giren {isim} olmasa da,
 Bu {isim}-ler $birgun {kfiil}-ecek.
 
-Belki {kfiil}-mese-de {isim}-ler, {kfiil}-mese-de {isim}-ler; {isim}-ler
+Belki {kfiil}-mese-dahi {isim}-ler, {kfiil}-mese-dahi {isim}-ler; {isim}-ler
 $birgun, bu {isim}-ler {kfiil}-ecek, {kfiil}-ecek.
 
 {kfiil}-meli $belkide bu {isim}-leri, {kfiil}-meli
