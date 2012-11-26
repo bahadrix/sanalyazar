@@ -75,8 +75,7 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
                     </ul>
                 </div>
             </div>
-        </div>
-        <div class="maincontainer">
+        </div><div class="maincontainer">
             <h1><?php echo $baslik ?></h1>
             <p><?php echo $sacmalik; ?></p>
         </div>

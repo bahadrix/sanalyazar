@@ -199,7 +199,7 @@ hr {
     border:1px solid #c0c0c0;
     position:absolute;
     width:940px;
-    top:124.5px;
+    top:148.5px;
     z-index:-1;
     background-color:#f9f9f9;
     padding:10px 25px;
@@ -286,4 +286,41 @@ hr {
     list-style-type:none;
     padding:0;
     margin:0 15px 0 0;
+}
+
+.footer {
+    position:absolute;
+    bottom:0;
+    width:100%;
+    background-color:#fafafa;
+    border-top:1px solid #ccc;
+    -webkit-box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.2);
+    -moz-box-shadow: 0 -2px 3px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0px -2px 3px 0px rgba(0, 0, 0, 0.2);
+}
+.footer .inner {
+    position:relative;
+    width:940px;
+    border-bottom:1px dashed #ddd;
+    margin: 0 auto;
+    text-align:left;
+    padding:0 10px;
+    font-size:10pt;
+}
+
+.footer .inner a {
+    color:#000;
+    text-decoration:none;
+}
+
+.footer .inner a:hover {
+    text-decoration:underline;
+}
+.footer .footnote {
+    position:relative;
+    width:940px;
+    padding:5px 0;
+    margin:0 auto;
+    font-size:7pt;
+    font-family:Verdana,Helvetica,sans-serif;
 }
