@@ -153,9 +153,13 @@ $(document).on('submit','form[name="loginform"]',function(e) {
             dataType: 'html',
             data: $(this).serialize(),
             success: function(data) {
-                if (data === 'OK') {
-                    location.reload(true);
+                if ((/^ok\d+$/).test(data)) {
+                    var id = data.substring(2);
+                    document.location = "goster.php?id="+id;
                 }
+                else if (data === 'OK') {
+                    location.reload(true);
+                } 
                 else {
                     $('form[name="loginform"]').append(data);
                 }

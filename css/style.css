@@ -259,3 +259,31 @@ hr {
 .sakla {
     display:none;
 }
+
+.sharebox {
+    width:800px;
+    margin: 50px auto;
+    padding:0;
+    background-color:#fafafa;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; 
+    border:1px solid #f1f1f1;
+}
+
+.sharebox .inner {
+    position:relative;
+    text-align:left;
+    padding: 5px 30px;
+    margin:0;
+}
+.sharebox ul.share {
+    padding:0;
+    margin:0;
+}
+.sharebox ul.share li {
+    display:inline;
+    list-style-type:none;
+    padding:0;
+    margin:0 15px 0 0;
+}

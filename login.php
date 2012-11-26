@@ -4,11 +4,12 @@
  * Login ve logout işlemlerini gerçekleştirir.
  * Login de hata olursa (yanlış şifre vb) hata mesajlarını döndürür.
  * Giriş başarılı olursa "OK" döndürür. Bu durumda mevcut sayfanın refresh edilmesi yeterlidir.
+ * Kaydet kutusu tiklendiyse "ok{id}" döndürür. 
  * 
  * Bi ara brute force önlemi alınmalı
  * 
  * 
- * @version 0.2 
+ * @version 0.21
  */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (empty($_POST['kuladi']) || empty($_POST['parola'])) {
@@ -58,9 +59,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $hashed = hash("sha256", $ref . $str . $agent);
                 $saltedhash = $str . $hashed;
                 $_SESSION['signature'] = $saltedhash;
-
+                /* -- SIGNATURE END -- */
+                
                 $_SESSION['son_islem'] = time();
-
                 $kaydet = false;
                 if (!empty($_POST['skaydet']) && $_POST['skaydet'] === "on") {
                     $yazi = $_POST['ksiir'];
@@ -71,12 +72,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         $kaydet = false;
                     }
                     if ($kaydet) {
-                        $siirekle = $db->prepare('INSERT INTO kaydedilenler (kayit,tarih,uid,baslik) VALUES (:kayit,NOW(),:uid,:baslik)');
+                        $siirekle = $link->prepare('INSERT INTO kaydedilenler (kayit,tarih,uid,baslik) VALUES (:kayit,NOW(),:uid,:baslik)');
                         $siirekle -> bindValue(':kayit',$yazi);
                         $siirekle -> bindValue(':uid',$_SESSION['uye']->uid);
                         $siirekle -> bindValue(':baslik',$baslik);
                         $siirekle -> execute();
-                        $getsid = $db -> prepare('SELECT kid FROM kaydedilenler WHERE uid = :uid ORDER BY tarih DESC');
+                        $getsid = $link -> prepare('SELECT kid FROM kaydedilenler WHERE uid = :uid ORDER BY tarih DESC');
                         $getsid -> bindValue(':uid',$_SESSION['uye']->uid);
                         $getsid -> execute();
                         $sid = $getsid->fetch(PDO::FETCH_OBJ)->kid;
@@ -84,10 +85,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 }
 
                 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
-                    echo "OK"; //sayfayı javascriptten yenile.
+                    //sayfayı javascriptten yenile.
+                    if ($kaydet) {
+                        echo "ok".$sid;
+                    }
+                    else
+                        echo "OK"; 
                 }
-                else
-                    header("Location: index.php");
+                else {
+                    if ($kaydet)
+                        header("Location: goster.php?id=".$sid);
+                    else
+                        header("Location: index.php");
+                }
             }
         }
     }
