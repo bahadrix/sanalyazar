@@ -51,7 +51,7 @@ if (!$MEMBER_LOGGED) {
                                     echo '<a href="oy.php?id=' . $kid . '&oy=' . $oy . '&op=g">geri al?</a>'; //geri al için &oy=$oy'a gerek yok. en baştaki IF kontrolünden dolayı koydum.
                                 }
                             } else {
-                                if (basename($_SERVER['HTTP_REFERER']) === "goster.php") { //ne olur ne olmaz.
+                                if (basename($_SERVER['HTTP_REFERER']) === "goster.php" || substr_unicode(basename($_SERVER['HTTP_REFERER']),0,14)==="goster.php?id=") { //ne olur ne olmaz.
                                     $setoy = $db->prepare('INSERT INTO oylar (uid,yid,oy,tarih) VALUES (:uid,:yid,:oy,NOW())');
                                     $setoy->bindValue(':uid', $MEMBER->uid);
                                     $setoy->bindValue(':yid', $kid);
