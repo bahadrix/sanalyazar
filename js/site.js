@@ -174,7 +174,8 @@ $(document).on('submit','form[name="loginform"]',function(e) {
 });
 /* kullanıcı girişi validation bitti */
 
-$(document).on('click','.girisyap', function() {
+$(document).on('click','.girisyap', function(e) {
+    e.preventDefault();
     var $l = $('.upperbox');
     if (!$l.is(':visible')) {
         $l.fadeIn(100).focus();
@@ -190,7 +191,12 @@ $(document).on("mouseenter", "label[class='checkbox']", function() {
 $(document).on("mouseleave", "label[class='checkbox']", function() {
    $(this).find('.tipbox').hide(); 
 });
-
+$(document).on("mouseenter", ".tiphandle", function() {
+   $(this).parent().find('.tipbox').show(); 
+});
+$(document).on("mouseleave", ".tiphandle", function() {
+   $(this).parent().find('.tipbox').hide(); 
+});
 $(document).on("click", 'a[href^="oy.php?id="]', function(e) {
     e.preventDefault();
     var ekleme = '<div class="oysnc"></div>',
@@ -207,4 +213,18 @@ $(document).on("click", 'a[href^="sil.php?id="]', function(e) {
     $parent.find('.oysnc').remove();
     $parent.append(ekleme);
     $('.oysnc').load($(this).attr('href') + ' .oyreturn');
+});
+$(document).on("submit", 'form[action="hq.php"]', function(e) {
+    $(this).append('<img src="./img/loader.gif" class="loadergif" />');
+    $('input[name="degistir"]').attr("disabled","disabled");
+    $('input[name="degistir"]').addClass('disabled');
+    setTimeout('submitDuzelt()', 5000);
+    e.preventDefault();
+    e.stopPropagation();
+    var ekleme = '<div class="blgsnc"></div>', 
+        $parent = $(this).parent();
+    $parent.find('.blgsnc').remove();
+    $parent.append(ekleme);
+    $('.blgsnc').load($(this).attr('action') + ' .bilgidegistir',$(this).serializeArray());
+    $('.loadergif').fadeOut(5000);
 });

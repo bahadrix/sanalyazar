@@ -17,7 +17,7 @@ else {
         $ad = $_POST['isim'];
         $soyad = $_POST['soyisim'];
 
-        if (strlen($nick) < 3 || strlen($nick) > 25)
+        if (unistrlen($nick) < 3 || unistrlen($nick) > 25)
             $nickErr = "Kullanıcı Adı 3-25 karakter arası olmalı.";
         else if (!preg_match("/^(?:[a-zşçüıöğ0-9_-]+\s?)*$/i", $nick))
             $nickErr = 'Kullanıcı Adı sadece harf, rakam, boşluk ve _- içerebilir.';
@@ -34,7 +34,7 @@ else {
         if ($sifret != $sifre)
             $sifretErr = "Şifreler aynı olmalı";
 
-        if (strlen($sifre) < 3 || strlen($sifre) > 30)
+        if (unistrlen($sifre) < 3 || unistrlen($sifre) > 30)
             $sifreErr = 'Şifre 3-30 karakter olmalı';
 
         if (empty($nickErr) && empty($emailErr) && empty($adErr) && empty($soyadErr) && empty($sifretErr) && empty($sifreErr)) {

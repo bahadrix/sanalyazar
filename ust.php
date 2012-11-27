@@ -46,7 +46,7 @@ include_once 'uyekontrol.php';
                                 <a href="uyeol.php">üye ol</a>
                             </li>
                             <li>
-                                <a class="dropdown girisyap" href="javascript:void(0);">giriş yap<b class="caret"></b></a>
+                                <a class="dropdown girisyap" href="giris.php">giriş yap<b class="caret"></b></a>
                             </li>
                         <?php } else { ?>
                             <div class="upperbox userbox">
@@ -66,7 +66,7 @@ include_once 'uyekontrol.php';
                                 <a href="uyeol.php">kaydettiklerim</a> <?php //placeholder, başka şeyler eklenebilir.    ?>
                             </li> 
                             <li>
-                                <a class="dropdown girisyap" href="javascript:void(0);">ben <b class="caret"></b></a>
+                                <a class="dropdown girisyap" href="hq.php">ben <b class="caret"></b></a>
                             </li>
                         <?php } ?>
                     </ul>

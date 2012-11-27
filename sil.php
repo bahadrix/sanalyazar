@@ -38,6 +38,9 @@ if (!$MEMBER_LOGGED) {
                                 echo "Geçersiz işlem.";
                             }
                         }
+                        else {
+                            echo "Yazı size ait değil.";
+                        }
                     }
                 }
                 ?>
