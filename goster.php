@@ -29,7 +29,7 @@ include_once 'ust.php';
         $id = $_REQUEST['id'];
         if (preg_match('/^\d+$/', $id)) {
             $randomyazi = $db->prepare('SELECT * FROM kaydedilenler WHERE kid = :id');
-            $randomyazi->bindValue(':kid', $id);
+            $randomyazi->bindValue(':id', $id);
             $randomyazi->execute();
             if ($randomyazi->rowCount() === 0) {
                 $gecersizid = true; // gösterme kısmına ilerlemesin.
@@ -74,8 +74,8 @@ include_once 'ust.php';
                     <?php
                     if ($MEMBER_LOGGED) {
                     ?>
-                    <li><?php echo '<a href="oy.php?id='.$siir['kid'].'" title="olmuş bu"><img src="img/tu.png" /></a>'?></li>
-                    <li><?php echo '<a href="oy.php?id='.$siir['kid'].'" title="böyle olmaz"><img src="img/td.png" style="margin-top:10px;" /></a>'?></li>
+                    <li><?php echo '<a href="oy.php?id='.$siir['kid'].'&oy=1" title="olmuş bu"><img src="img/tu.png" /></a>'?></li>
+                    <li><?php echo '<a href="oy.php?id='.$siir['kid'].'&oy=-1" title="böyle olmaz"><img src="img/td.png" style="margin-top:10px;" /></a>'?></li>
                     <?php 
                     if ($MEMBER->uid === $siir['uid']) {
                     ?>
@@ -87,8 +87,8 @@ include_once 'ust.php';
                 </ul>
             </div>
         </div>
-    </div>
     <?php
 }
+echo "</div>";
 include_once 'alt.php';
 ?>

@@ -27,6 +27,6 @@ if ($MEMBER_LOGGED) {
         session_destroy();
     }
     $_SESSION["son_islem"] = time();
-    /* Buraya Session Sanity Check eklenmeli */
+    /* Buraya Daha Fazla Session Sanity Check eklenmeli */
 }
 ?>

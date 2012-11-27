@@ -324,3 +324,12 @@ hr {
     font-size:7pt;
     font-family:Verdana,Helvetica,sans-serif;
 }
+
+.maincontainer .oysonuc {
+    background-color:#fafafa;
+    border:1px solid #ccc;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px; 
+    margin:0 auto;
+}

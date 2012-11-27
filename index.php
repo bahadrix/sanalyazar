@@ -1,4 +1,7 @@
 <?php
+/*
+ * En son SQL Dump'ı: https://dl.dropbox.com/u/34922847/sequeldump/sanalyazar.sql
+ */
 ob_start();
 include_once 'core/db.php';
 include_once 'funct.php';
