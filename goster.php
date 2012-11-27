@@ -62,7 +62,15 @@ include_once 'ust.php';
         $fozet = substr_unicode(strip_tags($fozettext),0,256);
         $fimg = "http://localhost/sanalyazar/img/kunduz.jpg";
         $fttl = "http://www.facebook.com/sharer.php?s=100&p[url]=".urlencode($furl)."&p[title]=".urlencode($fbaslik)."&p[summary]=".urlencode($fozet)."&p[images][0]=$fimg";
-        /* FACEBOOK BİLGİLERİ BİTTİ */ 
+        /* FACEBOOK BİLGİLERİ BİTTİ */
+        
+        $getusername = $db -> prepare('SELECT nick FROM uye WHERE uid = :uid');
+        $getusername -> bindValue(':uid',$siir['uid']);
+        $getusername -> execute();
+        if ($getusername -> rowCount()===0)
+            $nick = "";
+        else 
+            $nick = $getusername->fetch(PDO::FETCH_OBJ)->nick;
         ?>
         <h1><?php echo $siir['baslik']; ?></h1>
         <p><?php echo $siir['kayit']; ?></p>
@@ -84,6 +92,8 @@ include_once 'ust.php';
                     }
                     }
                     ?>
+                    <li><?php echo '<input type="text" value="http://www.delikunduz.com/goster.php?id='.$siir['kid'].'" class="sharelinkbox" onClick="selectAll(this);" />'; ?></li>
+                    <li style="float:right; margin-top:10px;font-size:9pt;font-family:Verdana,Helvetica,Arial,sans-serif;"><?php if ($nick === "" || empty($nick)) echo ""; else echo "<a href='profil.php?kid=".$siir['uid']."'>$nick</a> kaydetti."; ?></li>
                 </ul>
             </div>
         </div>

@@ -5,6 +5,6 @@
             <div class="footnote">
                 <p>copyright © 2012 sanalyazar<br />Sitede yer alan tüm yazılı ve görsel materyal, html kodlarına varıncaya kadar yalandır, uydurmadır. Kemik yaşı 18'den küçük olanlar için site içeriği uygunsuz olabilir. Sanalyazar içeriği herhangi bir ön denetimden geçmeksizin yayımlanmakta ve doğru değildir. Bu web sitesinde yaratabileceği hukuki sakıncalar başta olmak üzere olumsuz bir durumla karşılaştığınızı düşünüyorsanız lütfen iletişim bölümünden sanalyazar ekibi ile irtibata geçiniz. Saygılarımızla.</p>
             </div>
-            </div>
+        </div>
     </body>
 </html>

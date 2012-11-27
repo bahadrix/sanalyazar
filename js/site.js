@@ -21,6 +21,11 @@ function submitDuzelt() {
     $('input[type="submit"]').removeClass('disabled');
 };
 
+function selectAll(t) {
+    t.focus();
+    t.select();
+}
+
 /* üye ol validation kısmı */
 $(document).on('reset','#register',function() {
     $('#uyetablo').find('span').remove();
