@@ -1,11 +1,5 @@
 <?php
 session_start();
-/**
- * Member object
- * @var memberModel
- */
-$MEMBER = $MEMBER_LOGGED ? $_SESSION['uye'] : null;
-
 if (!empty($_SESSION['logged']) && $_SESSION['logged']) {
     if (empty($_SESSION["signature"])) {
         session_unset();
@@ -29,4 +23,9 @@ if (!empty($_SESSION['logged']) && $_SESSION['logged']) {
     /* Buraya Daha Fazla Session Sanity Check eklenmeli */
 }
 $MEMBER_LOGGED = !empty($_SESSION['logged']) && $_SESSION['logged']; //yukardaki işlemlerde session_destroy() olduysa diye en sona eklendi.
+/**
+ * Member object
+ * @var memberModel
+ */
+$MEMBER = $MEMBER_LOGGED ? $_SESSION['uye'] : null;
 ?>
