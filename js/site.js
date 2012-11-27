@@ -190,12 +190,21 @@ $(document).on("mouseenter", "label[class='checkbox']", function() {
 $(document).on("mouseleave", "label[class='checkbox']", function() {
    $(this).find('.tipbox').hide(); 
 });
+
 $(document).on("click", 'a[href^="oy.php?id="]', function(e) {
     e.preventDefault();
     var ekleme = '<div class="oysnc"></div>',
         $parent = $(this).parents('.inner');
-    if ($parent.find('.oysnc'))
-        $parent.find('.oysnc').remove();
+    $parent.find('.oysnc').remove();
+    $parent.append(ekleme);
+    $('.oysnc').load($(this).attr('href') + ' .oyreturn');
+});
+
+$(document).on("click", 'a[href^="sil.php?id="]', function(e) {
+    e.preventDefault();
+    var ekleme = '<div class="oysnc"></div>',
+        $parent = $(this).parents('.inner');
+    $parent.find('.oysnc').remove();
     $parent.append(ekleme);
     $('.oysnc').load($(this).attr('href') + ' .oyreturn');
 });

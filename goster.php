@@ -82,12 +82,12 @@ include_once 'ust.php';
                     <?php
                     if ($MEMBER_LOGGED) {
                     ?>
-                    <li><?php echo '<a href="oy.php?id='.$siir['kid'].'&oy=1" title="olmuş bu"><img src="img/tu.png" /></a>'?></li>
-                    <li><?php echo '<a href="oy.php?id='.$siir['kid'].'&oy=-1" title="böyle olmaz"><img src="img/td.png" style="margin-top:10px;" /></a>'?></li>
+                    <li><?php echo '<a target="_blank" href="oy.php?id='.$siir['kid'].'&oy=1" title="olmuş bu"><img src="img/tu.png" /></a>'?></li>
+                    <li><?php echo '<a target="_blank" href="oy.php?id='.$siir['kid'].'&oy=-1" title="böyle olmaz"><img src="img/td.png" style="margin-top:10px;" /></a>'?></li>
                     <?php 
                     if ($MEMBER->uid === $siir['uid']) {
                     ?>
-                    <li><?php echo '<a href="sil.php?id='.$siir['kid'].'" title="bu olmamış ya sil bunu"><img src="img/thrashm.png" /></a>'?></li>
+                    <li><?php echo '<a target="_blank" href="sil.php?id='.$siir['kid'].'" title="bu olmamış ya sil bunu"><img src="img/thrashm.png" /></a>'?></li>
                     <?php
                     }
                     }
