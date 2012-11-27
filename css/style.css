@@ -160,6 +160,7 @@ hr {
     width:940px;
     height:20px;
     z-index:2;
+    border-bottom:1px solid #f9f9f9;
 }
 
 .maincontainer .hqmenu ul {
@@ -188,23 +189,17 @@ hr {
 }
 
 .maincontainer .hqcontainer {
-    /*
-    * burda position:absolute çok saçma oldu ama başka türlü yaparsam
-    * div içindeki yazılar üstteki list'in uzunluğundan etkileniyor.
-    * fix biliyosan yap abi
-    */
     -webkit-border-radius: 7px;
     -moz-border-radius: 7px;
     border-radius: 7px;
     border:1px solid #c0c0c0;
-    position:absolute;
+    position:relative;
     width:940px;
-    top:148.5px;
     z-index:-1;
     background-color:#f9f9f9;
     padding:10px 25px;
     text-align:left;
-    margin:0;
+    margin:4px 0;
     text-shadow:none;
 }
 
