@@ -38,7 +38,7 @@ else {
                 if ($tploa>0) {
                     if ($tploa > $sayfabasina) {
                         $pager = true;
-                        $ttlpages = $tploa/$sayfabasina;
+                        $ttlpages = intval($tploa/$sayfabasina)+1;
                     }
                 }
                 $yazilar = $getoylar->fetchAll();
