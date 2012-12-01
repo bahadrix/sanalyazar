@@ -9,12 +9,12 @@ else {
             <ul>
                 <li><a href="hq.php" class="hqmenunav">bilgilerim</a></li>
                 <li><a href="#sablon" class="hqmenunav">şablonlarım</a></li>
-                <li class="active"><a href="oa.php" class="hqmenunav">en çok oy alanlarım</a></li>
+                <li class="activehn"><a href="oa.php" class="hqmenunav">en çok oy alanlarım</a></li>
                 <li><a href="ov.php" class="hqmenunav">oy verdiklerim</a></li>
-                <li>vb</li>
             </ul>        
         </div>
-        <div class="hqcontainer" id="bilgi">
+        <div class="hqcontainer">
+            <div class="hqinner">
             <?php
             $sayfabasina = 20; //bir sayfada gösterilecek yazı sayısı
             if (empty($_REQUEST['p']) || (!empty($_REQUEST['p']) && !is_numeric($_REQUEST['p'])))
@@ -63,9 +63,9 @@ else {
                     }
                     echo '</span>';
                 }
-                
             }
             ?>
+            </div>
         </div>
     </div>
 <?php

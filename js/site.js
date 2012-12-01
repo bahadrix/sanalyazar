@@ -228,3 +228,9 @@ $(document).on("submit", 'form[action="hq.php"]', function(e) {
     $('.blgsnc').load($(this).attr('action') + ' .bilgidegistir',$(this).serializeArray());
     $('.loadergif').fadeOut(5000);
 });
+$(document).on("click",'a[class="hqmenunav"]',function(e) {
+    e.preventDefault();
+    $('ul li').removeClass('activehn');
+    $('.hqcontainer').load($(this).attr('href') + ' .hqinner');
+    $(this).parent().addClass('activehn');
+});

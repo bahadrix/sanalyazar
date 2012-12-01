@@ -7,45 +7,46 @@ else {
     <div class="maincontainer">
         <div class="hqmenu">
             <ul>
-                <li class="active"><a href="hq.php" class="hqmenunav">bilgilerim</a></li>
+                <li class="activehn"><a href="hq.php" class="hqmenunav">bilgilerim</a></li>
                 <li><a href="#sablon" class="hqmenunav">şablonlarım</a></li>
                 <li><a href="oa.php" class="hqmenunav">en çok oy alanlarım</a></li>
                 <li><a href="ov.php" class="hqmenunav">oy verdiklerim</a></li>
-                <li>vb</li>
             </ul>        
         </div>
-        <div class="hqcontainer" id="bilgi">
-            <form method="post" action="hq.php">
-                <span class="baslik">Şifre</span>
-                <table class="bilgiler" cellpadding="5">
-                    <tr>
-                        <td><div class="tipbox sakla" style="top:-10px;">İki alan için de şu anki şifrenin doldurulması zorunludur.<div class="tail1"></div><div class="tail2"></div></div><span class="tiphandle">Şu anki şifre:*</span></td>
-                        <td><input type="password" name="passnow" /></td>
-                    </tr>
-                    <tr>
-                        <td>Yeni şifre:</td>
-                        <td><input type="password" name="passnew" /></td>
-                    </tr>
-                    <tr>
-                        <td>Yeni şifre tekrar:</td>
-                        <td><input type="password" name="passnewa" /></td>
-                    </tr>
-                </table>
-                <hr />
-                <span class="baslik">E-Mail</span>
-                <table class="bilgiler" cellpadding="5">
-                    <tr>
-                        <td>Şu anki e-mail:</td>
-                        <td><input type="email" name="emailnow" /></td>
-                    </tr>
-                    <tr>
-                        <td>Yeni e-mail:</td>
-                        <td><input type="email" name="emailnew" /></td>
-                    </tr>
-                </table>
-                <hr />
-                <input type="submit" class="btn btn-mini btn-success" name="degistir" value="Değiştir" />
-            </form>
+        <div class="hqcontainer">
+            <div class="hqinner">
+                    <form method="post" action="hq.php">
+                        <span class="baslik">Şifre</span>
+                        <table class="bilgiler" cellpadding="5">
+                            <tr>
+                                <td><div class="tipbox sakla" style="top:-10px;">İki alan için de şu anki şifrenin doldurulması zorunludur.<div class="tail1"></div><div class="tail2"></div></div><span class="tiphandle">Şu anki şifre:*</span></td>
+                                <td><input type="password" name="passnow" /></td>
+                            </tr>
+                            <tr>
+                                <td>Yeni şifre:</td>
+                                <td><input type="password" name="passnew" /></td>
+                            </tr>
+                            <tr>
+                                <td>Yeni şifre tekrar:</td>
+                                <td><input type="password" name="passnewa" /></td>
+                            </tr>
+                        </table>
+                        <hr />
+                        <span class="baslik">E-Mail</span>
+                        <table class="bilgiler" cellpadding="5">
+                            <tr>
+                                <td>Şu anki e-mail:</td>
+                                <td><input type="email" name="emailnow" /></td>
+                            </tr>
+                            <tr>
+                                <td>Yeni e-mail:</td>
+                                <td><input type="email" name="emailnew" /></td>
+                            </tr>
+                        </table>
+                        <hr />
+                        <input type="submit" class="btn btn-mini btn-success" name="degistir" value="Değiştir" />
+                    </form>
+                </div>
             <?php
             if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $db = getPDO();
