@@ -7,10 +7,10 @@ else {
     <div class="maincontainer">
         <div class="hqmenu">
             <ul>
-                <li class="active"><a href="#bilgi">bilgilerim</a></li>
-                <li><a href="#sablon">şablonlarım</a></li>
-                <li><a href="#encokoy">en çok oy alanlarım</a></li>
-                <li><a href="#oyverdigim">oy verdiklerim</a></li>
+                <li class="active"><a href="hq.php" class="hqmenunav">bilgilerim</a></li>
+                <li><a href="#sablon" class="hqmenunav">şablonlarım</a></li>
+                <li><a href="oa.php" class="hqmenunav">en çok oy alanlarım</a></li>
+                <li><a href="ov.php" class="hqmenunav">oy verdiklerim</a></li>
                 <li>vb</li>
             </ul>        
         </div>
@@ -19,7 +19,7 @@ else {
                 <span class="baslik">Şifre</span>
                 <table class="bilgiler" cellpadding="5">
                     <tr>
-                        <td><div class="tipbox sakla" style="top:-10px;">İki alan için de şu anki şifrenin doldurulması zorunludur.</div><span class="tiphandle">Şu anki şifre:*</span></td>
+                        <td><div class="tipbox sakla" style="top:-10px;">İki alan için de şu anki şifrenin doldurulması zorunludur.<div class="tail1"></div><div class="tail2"></div></div><span class="tiphandle">Şu anki şifre:*</span></td>
                         <td><input type="password" name="passnow" /></td>
                     </tr>
                     <tr>

@@ -40,7 +40,7 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
                                       $parts = Explode('/', $currentFile);
                                       $page = $parts[count($parts) - 1];
                                       if ($page == "index.php") */
-                                    echo '<label class="checkbox" style="text-align:left;"><div class="tipbox sakla">Şu an görünen şiiri kaydetmek için bu kutuyu işaretleyin.</div><input type="checkbox" name="skaydet"><span style="margin-left:-50px;padding-top:-20px;">Kaydet?</span></label>';
+                                    echo '<label class="checkbox" style="text-align:left;"><div class="tipbox">Şu an görünen şiiri kaydetmek için bu kutuyu işaretleyin.<div class="tail1"></div><div class="tail2"></div></div><input type="checkbox" name="skaydet"><span style="margin-left:-50px;padding-top:-20px;">Kaydet?</span></label>';
                                     echo '<input type="hidden" value="' . $sacmalik . '" name="ksiir" /><input type="hidden" value="' . $baslik . '" name="baslik" />';
                                     ?>
                                     <input type="submit" name="loginsubmit" value="Gir" class="btn btn-mini" /><br /><br />

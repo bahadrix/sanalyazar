@@ -45,13 +45,21 @@ class Lingustian {
                     return $yenikelime . $ek;
                 else
                     return $yenikelime . $digerleri[$ek];
-            else {
+            else { //isim tamlamasıysa 
                 $sondan_onceki_harf = self::sub_uni($kelime, -2, 1);
                 
-                if ($sondan_onceki_harf === "s") {
+                if ($sondan_onceki_harf === "s") { //büyük ihtimalle belirtili veya belirtisiz isim tamlamasıdır.
                     $yenikelime = self::sub_uni($yenikelime, 0, -2);
                 } else {
-                    $yenikelime = self::sub_uni($yenikelime, 0, -1);
+                    /* "küçük martı" kelimesi tamlama olmadığından -ler eki kullanıldığında burda "küçük martları" oluyor. "Küçük martılar" olması gerekiyor tabi :)
+                     * bir çözüm aşağıdaki gibi olabilir. Eğer ilk kelime belirtilen kelimelerden biriyse direkt return edebiliriz.
+                     * Bu durumda ise "büyük ünlü uyumu" gibi kelimeler sıkıntı yaratır. İsim tamlaması olduğu için burda doğru çalışır fonksiyon. Fakat bu eklenti ile yanlış çalışır. 
+                     * 
+                     * $getilkkelime = explode(" ",trim($kelime));
+                     * if ($getilkkelime === "büyük" || $getilkkelime === "küçük")
+                     * return $kelime . ($si ? $ek : $digerleri[$ek]); 
+                     */
+                    $yenikelime = self::sub_uni($yenikelime, 0, -1); 
                 }
                 $yeni_sondan_onceki_harf = self::sub_uni($yenikelime, -2, 1);
                 $yeni_son_harf = self::sub_uni($yenikelime, -1);
