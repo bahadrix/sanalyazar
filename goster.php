@@ -99,6 +99,8 @@ include_once 'ust.php';
         </div>
     <?php
 }
-echo "</div>";
+?>
+</div>
+<?php
 include_once 'alt.php';
 ?>

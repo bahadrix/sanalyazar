@@ -14,10 +14,10 @@ class Lingustian {
     }
 
     /**
-     * DENEME AMAÇLI FONKSİYON
      * bütün ler lar ekleri için çalışmalı fakat çok fazla denemedim.
      * şu an sadece -lerin ve -ler eki için kullanılıyor. (bkz: wordengine.php)
      * hataları var.
+     * sıfatla gelen iki kelimelerde sıkıntı var. (asal sayı, küçük martı vb.)
      * @param string $kelime
      * @param string $ek
      * @param boolean $si
@@ -30,6 +30,7 @@ class Lingustian {
         $eklerdaral = array('i' => 'ı', 'in' => 'ın');
 
         $yenikelime = $kelime;
+        $yenikelime = preg_replace('/\([a-zığçüöşâî ]*\)/i','',$yenikelime); //veritabanında "asal sayı(lar)" diye kelime var.
         mb_internal_encoding('UTF-8');
         if (strpos($yenikelime, 'ler') !== false) {
             $yenikelime = self::sub_uni($kelime, 0, mb_strpos($yenikelime, "ler")) . self::sub_uni($kelime, mb_strpos($kelime, "ler") + 3);

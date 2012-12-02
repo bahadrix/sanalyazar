@@ -81,6 +81,22 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
         </div><div class="maincontainer">
             <h1><?php echo $baslik ?></h1>
             <p><?php echo $sacmalik; ?></p>
+            <?php
+            if ($MEMBER_LOGGED) {
+            ?>
+            <div class="sharebox">
+                <div class="inner">
+                    <form action="kaydet.php" method="post">
+                        <?php
+                        echo '<input type="hidden" name="kaydetbaslik" value="'.$baslik.'" /><input type="hidden" value="' . $sacmalik . '" name="kaydetsiir" />';
+                        ?>
+                        <input type="submit" name="kaydetbunu" value="kaydet" class="btn btn-info btn-small" style="margin:15px 0 0 0;" />
+                    </form>
+                </div>
+            </div>
+            <?php
+            }
+            ?>
         </div>
         <?php
         include_once 'alt.php';
