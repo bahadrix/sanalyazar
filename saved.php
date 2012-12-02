@@ -8,7 +8,7 @@ if (!$MEMBER_LOGGED) {
         <fieldset class="savedfs">
             <legend class="savedlegend">Kaydettiklerim</legend>
             <?php
-            $sayfabasina = 3;
+            $sayfabasina = 20; 
             if (empty($_REQUEST['p']) || (!empty($_REQUEST['p']) && !is_numeric($_REQUEST['p'])))
                 $page = 1;
             else
