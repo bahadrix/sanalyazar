@@ -9,13 +9,13 @@ else {
             <ul>
                 <li><a href="hq.php" class="hqmenunav">bilgilerim</a></li>
                 <li><a href="#sablon" class="hqmenunav">şablonlarım</a></li>
-                <li class="activehn"><a href="oa.php" class="hqmenunav">oy alan kayıtlarım</a></li>
-                <li><a href="ov.php" class="hqmenunav">oy verdiklerim</a></li>
+                <li><a href="oa.php" class="hqmenunav">oy alan kayıtlarım</a></li>
+                <li class="activehn"><a href="ov.php" class="hqmenunav">oy verdiklerim</a></li>
             </ul>        
         </div>
         <div class="hqcontainer">
             <div class="hqinner">
-                    <?php
+                <?php
                     $sayfabasina = 20; //bir sayfada gösterilecek yazı sayısı
                     if (empty($_REQUEST['p']) || (!empty($_REQUEST['p']) && !is_numeric($_REQUEST['p'])))
                         $page = 1;
@@ -23,11 +23,11 @@ else {
                         $page = $_REQUEST['p'];
                     $db = getPDO();
                     $pager = false;
-                    $toplamoyalanlar = $db->prepare('SELECT COUNT(DISTINCT kid) AS oyalankid FROM oylar INNER JOIN kaydedilenler ON oylar.yid = kaydedilenler.kid WHERE kaydedilenler.uid = :uid');
+                    $toplamoyalanlar = $db->prepare('SELECT COUNT(oy) AS oyverdigim FROM oylar WHERE oylar.uid = :uid');
                     $toplamoyalanlar->bindValue(':uid', $MEMBER->uid);
                     $toplamoyalanlar->execute();
-                    $tploa = $toplamoyalanlar->fetch(PDO::FETCH_OBJ)->oyalankid;
-                    $ttlpages=1;
+                    $tploa = $toplamoyalanlar->fetch(PDO::FETCH_OBJ)->oyverdigim;
+                    $ttlpages = 1;
                     if ($tploa > 0) {
                         if ($tploa > $sayfabasina) {
                             $pager = true;
@@ -42,13 +42,13 @@ else {
                     else if ($page < 1)
                         $page = 1;
                     $baslangic = ($page - 1) * $sayfabasina;
-                    $getoylar = $db->prepare("SELECT SUM(oylar.oy) as oytoplam, kid, baslik FROM oylar INNER JOIN kaydedilenler ON oylar.yid = kaydedilenler.kid WHERE kaydedilenler.uid = :uid GROUP BY kid ORDER BY oytoplam DESC LIMIT $baslangic,$sayfabasina");
-                    $getoylar->bindValue(':uid', $MEMBER->uid);
-                    $getoylar->execute();
-                    if ($getoylar->rowCount() === 0) {
-                        echo "Oy almış şiiriniz yok.";
+                    $getoyverdigim = $db->prepare("SELECT kid, baslik FROM oylar INNER JOIN kaydedilenler ON oylar.yid = kaydedilenler.kid WHERE oylar.uid = :uid ORDER BY oylar.tarih DESC LIMIT $baslangic,$sayfabasina");
+                    $getoyverdigim->bindValue(':uid', $MEMBER->uid);
+                    $getoyverdigim->execute();
+                    if ($getoyverdigim->rowCount() === 0) {
+                        echo "Oy verdiğiniz bir şey yok.";
                     } else {
-                        $yazilar = $getoylar->fetchAll();
+                        $yazilar = $getoyverdigim->fetchAll();
                         echo '<ol start="' . ($baslangic + 1) . '">';
                         for ($i = 0; $i < count($yazilar); $i++) {
                             echo '<li><a href="goster.php?id=' . $yazilar[$i]['kid'] . '">' . $yazilar[$i]['baslik'] . '</a></li>';
@@ -62,7 +62,7 @@ else {
                                 if ($j == $page) {
                                     echo " $j ";
                                 } else {
-                                    echo ' <a href="oa.php?p=' . $j . '">' . $j . '</a> ';
+                                    echo ' <a href="ov.php?p=' . $j . '">' . $j . '</a> ';
                                 }
                                 if ($j != $ttlpages)
                                     echo ' <span style="color:#ccc">|</span> ';
@@ -70,11 +70,11 @@ else {
                             echo '</span>';
                         }
                     }
-                    ?>
+                ?>
             </div>
         </div>
     </div>
-<?php
+    <?php
 }
 include_once 'alt.php';
 ?>

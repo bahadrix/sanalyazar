@@ -9,7 +9,7 @@ else {
             <ul>
                 <li class="activehn"><a href="hq.php" class="hqmenunav">bilgilerim</a></li>
                 <li><a href="#sablon" class="hqmenunav">şablonlarım</a></li>
-                <li><a href="oa.php" class="hqmenunav">en çok oy alanlarım</a></li>
+                <li><a href="oa.php" class="hqmenunav">oy alan kayıtlarım</a></li>
                 <li><a href="ov.php" class="hqmenunav">oy verdiklerim</a></li>
             </ul>        
         </div>

@@ -69,7 +69,7 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
                             </div>
 
                             <li>
-                                <a href="uyeol.php">kaydettiklerim</a> <?php //placeholder, başka şeyler eklenebilir.      ?>
+                                <a href="saved.php">kaydettiklerim</a> <?php //placeholder, başka şeyler eklenebilir.      ?>
                             </li> 
                             <li>
                                 <a class="dropdown girisyap" href="hq.php">ben <b class="caret"></b></a>

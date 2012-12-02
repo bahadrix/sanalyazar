@@ -32,18 +32,32 @@ input[type="color"],
 
 fieldset {
     border:1px solid #c0c0c0;
-    width:600px;
     margin-left:auto;
     margin-right:auto;
 }
 
 legend {
-    width:100px;
+    max-width:300px;
     font-size:24px;
     border:0;
 }
 
 /* END OF BOOTSTRAP OVERRIDES */
+fieldset {
+    background-color:#f9f9f9;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+legend {
+    background-color:#fff;
+    border:1px solid #ddd;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+    text-align:center;
+    margin-left:5px;
+}
 
 div.maincontainer {
     margin-top:70px;
@@ -100,18 +114,20 @@ input:hover, input:focus {
 }
 
 fieldset.uyefs {
-    background-color:#f9f9f9;
-    -webkit-border-radius: 5px;
-    -moz-border-radius: 5px;
-    border-radius: 5px;
+    width:600px;
+}
+
+fieldset.savedfs {
+    width:940px;
+    text-align:left;
+    padding:10px;
 }
 
 legend.uyelegend {
-    background-color:#fff;
-    border:1px solid #ddd;
-    -webkit-border-radius: 8px;
-    -moz-border-radius: 8px;
-    border-radius: 8px;
+    width:100px;
+}
+legend.savedlegend {
+    width:200px;
 }
 .upperbox {
     position:absolute;
