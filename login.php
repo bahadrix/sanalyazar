@@ -60,26 +60,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $saltedhash = $str . $hashed;
                 $_SESSION['signature'] = $saltedhash;
                 /* -- SIGNATURE END -- */
-                
+
                 $_SESSION['son_islem'] = time();
                 $kaydet = false;
                 if (!empty($_POST['skaydet']) && $_POST['skaydet'] === "on") {
                     $yazi = $_POST['ksiir'];
                     $baslik = $_POST['baslik'];
+                    /* Textile öncesi kod:
+                     * Yazı kısmında Textile kullanacağımız için şimdilik gerek duymuyorum.
+                     * Textile ile çok deneme yapamadım, yapınca gerek duyarsak tekrar ekleriz.
+                      $kaydet = true;
+                      veritabanına kod girişini önleme çabaları:
+                      if (!preg_match('/^[a-zçöğüşıâî\- ]+$/i', $baslik) || !preg_match('/^(?:[a-zİÇÖĞÜŞıçöğüşâî\-,\.; ]+(?:\<br \/\>)*)+$/i', $yazi)) {
+                      $kaydet = false;
+                      }
+                      if ($kaydet) { */
                     $kaydet = true;
-                    //veritabanına kod girişini önleme çabaları:
-                    if (!preg_match('/^[a-zçöğüşıâî\-]+$/i', $baslik) || !preg_match('/^(?:[a-zİÇÖĞÜŞıçöğüşâî\-,\.; ]+(?:\<br \/\>)*)+$/i',$yazi)) {
+                    if (!preg_match('/^[a-zçöğüşıâî\- ]+$/i', $baslik)) //başlık kontrolü yeniden eklendi.
                         $kaydet = false;
-                    }
                     if ($kaydet) {
                         $siirekle = $link->prepare('INSERT INTO kaydedilenler (kayit,tarih,uid,baslik) VALUES (:kayit,NOW(),:uid,:baslik)');
-                        $siirekle -> bindValue(':kayit',$yazi);
-                        $siirekle -> bindValue(':uid',$_SESSION['uye']->uid);
-                        $siirekle -> bindValue(':baslik',$baslik);
-                        $siirekle -> execute();
-                        $getsid = $link -> prepare('SELECT kid FROM kaydedilenler WHERE uid = :uid ORDER BY tarih DESC');
-                        $getsid -> bindValue(':uid',$_SESSION['uye']->uid);
-                        $getsid -> execute();
+                        $siirekle->bindValue(':kayit', $yazi);
+                        $siirekle->bindValue(':uid', $_SESSION['uye']->uid);
+                        $siirekle->bindValue(':baslik', $baslik);
+                        $siirekle->execute();
+                        $getsid = $link->prepare('SELECT kid FROM kaydedilenler WHERE uid = :uid ORDER BY tarih DESC');
+                        $getsid->bindValue(':uid', $_SESSION['uye']->uid);
+                        $getsid->execute();
                         $sid = $getsid->fetch(PDO::FETCH_OBJ)->kid;
                     }
                 }
@@ -87,14 +94,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 if (!empty($_SERVER['HTTP_X_REQUESTED_WITH']) && strtolower($_SERVER['HTTP_X_REQUESTED_WITH']) == 'xmlhttprequest') {
                     //sayfayı javascriptten yenile.
                     if ($kaydet) {
-                        echo "ok".$sid;
+                        echo "ok" . $sid;
                     }
                     else
-                        echo "OK"; 
+                        echo "OK";
                 }
                 else {
                     if ($kaydet)
-                        header("Location: goster.php?id=".$sid);
+                        header("Location: goster.php?id=" . $sid);
                     else
                         header("Location: index.php");
                 }

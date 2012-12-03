@@ -25,13 +25,13 @@ if (!$MEMBER_LOGGED) {
                                 echo '<a target="_blank" href="goster.php?id=' . $kid . '">Bu</a> şiiri silmek istediğinizden emin misiniz?<br /><a href="sil.php?id=' . $kid . '&onay=1" title="geri dönüşü olmayan bir yola giriyoruz">evet</a>';
                             }
                             else if (!empty($_REQUEST['onay']) && $_REQUEST['onay']==1) {
+                                $oysil = $db->prepare('DELETE FROM oylar WHERE yid = :yid');
+                                $oysil->bindValue(':yid', $kid);
+                                $oysil->execute();
                                 $siirsil = $db->prepare('DELETE FROM kaydedilenler WHERE kid = :kid AND uid = :uid');
                                 $siirsil->bindValue(':kid', $kid);
                                 $siirsil->bindValue(':uid', $MEMBER->uid);
                                 $siirsil->execute();
-                                $oysil = $db->prepare('DELETE FROM oylar WHERE yid = :yid');
-                                $oysil->bindValue(':yid', $kid);
-                                $oysil->execute();
                                 echo "Yazı silindi.";
                             }
                             else {

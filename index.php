@@ -8,6 +8,8 @@ include_once 'funct.php';
 include_once 'uyekontrol.php';
 include_once 'sir.php';
 $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
+//br kaldıralım ki kaydederken sorun olmasın... Textile için gerekli...
+$wnl = preg_replace('#<br\s*/?>#i', "\n", $sacmalik);
 ?>
 ?>
 <!DOCTYPE html>
@@ -41,7 +43,7 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
                                       $page = $parts[count($parts) - 1];
                                       if ($page == "index.php") */
                                     echo '<label class="checkbox" style="text-align:left;"><div class="tipbox">Şu an görünen şiiri kaydetmek için bu kutuyu işaretleyin.<div class="tail1"></div><div class="tail2"></div></div><input type="checkbox" name="skaydet"><span style="margin-left:-50px;padding-top:-20px;">Kaydet?</span></label>';
-                                    echo '<input type="hidden" value="' . $sacmalik . '" name="ksiir" /><input type="hidden" value="' . $baslik . '" name="baslik" />';
+                                    echo '<input type="hidden" value="' . $wnl . '" name="ksiir" /><input type="hidden" value="' . $baslik . '" name="baslik" />';
                                     ?>
                                     <input type="submit" name="loginsubmit" value="Gir" class="btn btn-mini" /><br /><br />
                                 </form>
@@ -88,7 +90,7 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
                 <div class="inner">
                     <form action="kaydet.php" method="post">
                         <?php
-                        echo '<input type="hidden" name="kaydetbaslik" value="'.$baslik.'" /><input type="hidden" value="' . $sacmalik . '" name="kaydetsiir" />';
+                        echo '<input type="hidden" name="kaydetbaslik" value="'.$baslik.'" /><input type="hidden" value="' . $wnl . '" name="kaydetsiir" />';
                         ?>
                         <input type="submit" name="kaydetbunu" value="kaydet" class="btn btn-info btn-small" style="margin:15px 0 0 0;" />
                     </form>
