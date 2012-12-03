@@ -24,6 +24,7 @@ include_once 'classTextile.php';
                     /* max id ve 0 arası bir sayı üret, üretilen sayı için çalışan 
                      * sorgu 1 satırı etki ettiyse onu al, yoksa bir daha 
                      * çalıştır.
+                     * Buraya 10-15 kere dene, olmazsa direkt maxid'yi al eklenebilir.
                      */
                     $rnd = mt_rand(0, $rid);
                     $randomyazi->bindValue(':id', $rnd);

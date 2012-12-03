@@ -15,6 +15,7 @@ include_once 'uyekontrol.php';
         <script type="text/javascript" src="js/site.js"></script>
     </head>
     <body>
+        <div class="wrap">
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">

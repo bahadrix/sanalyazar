@@ -27,8 +27,66 @@ window.JSON||(window.JSON={}),function(){function f(a){return a<10?"0"+a:a}funct
 
 /*
  * sanalyazar kısmı
- * @version 0.15
+ * @version 0.20
  */ 
+
+// fonksiyonlar
+$.fn.tae = function(tagName, link, text) {
+    return this.each(function() {
+        if (tagName === "url") {
+            strStart = '"' + text + '":';
+            strEnd = link;
+        }
+        else if (tagName.length>1){
+            strStart = '{'+tagName;
+            strEnd = '}';
+            addOne = true;
+        } 
+        else {
+            strStart = tagName;
+            strEnd = tagName;
+            addOne = false;
+        }
+        if (document.selection) {
+            //IE support
+            stringBefore = this.value;
+            this.focus();
+            sel = document.selection.createRange();
+            insertstring = sel.text;
+            fullinsertstring = strStart + sel.text + strEnd;
+            sel.text = fullinsertstring;
+            document.selection.empty();
+            this.focus();
+            stringAfter = this.value;
+            i = stringAfter.lastIndexOf(fullinsertstring);
+            range = this.createTextRange();
+            numlines = stringBefore.substring(0, i).split("\n").length;
+            i = i + 3 - numlines + tagName.length;
+            j = insertstring.length;
+            range.move("character", i);
+            range.moveEnd("character", j);
+            range.select();
+        } else if (this.selectionStart || this.selectionStart == '0') {
+            //rest
+            startPos = this.selectionStart;
+            endPos = this.selectionEnd;
+            scrollTop = this.scrollTop;
+            this.value = this.value.substring(0, startPos) + strStart + this.value.substring(startPos, endPos) + strEnd + this.value.substring(endPos, this.value.length);
+            this.focus();
+            this.selectionStart = startPos + strStart.length;
+            this.selectionEnd = endPos + strStart.length;
+            this.scrollTop = scrollTop;
+        } else {
+            this.value += strStart + strEnd;
+            this.focus();
+        }
+    });
+};
+
+function isURL(a) {
+    return /^(https?|ftp):\/\/(((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:)*@)?(((\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5])\.(\d|[1-9]\d|1\d\d|2[0-4]\d|25[0-5]))|((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?)(:\d*)?)(\/((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)+(\/(([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)*)*)?)?(\?((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|[\uE000-\uF8FF]|\/|\?)*)?(\#((([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(%[\da-f]{2})|[!\$&'\(\)\*\+,;=]|:|@)|\/|\?)*)?$/i.test(a)
+};
+            
 function submitDuzelt() {
     $('input[type="submit"]').removeAttr('disabled');
     $('input[type="submit"]').removeClass('disabled');
@@ -38,6 +96,36 @@ function selectAll(t) {
     t.focus();
     t.select();
 }
+// fonksiyonlar bitti
+
+$(document).on('click',"div#butonlar button",function(e){
+    e.stopPropagation();
+    var bid = $(this).attr('id'),
+      $txta = $('.yenitxta');
+    switch (bid) {
+        case "isim":
+            $txta.tae('isim');
+            break;
+        case "fiil":
+            $txta.tae('fiil');
+            break;
+        case "sifat":
+            $txta.tae('sifat');
+            break;
+        case "italik":
+            $txta.tae('_');
+            break;
+        case "kalin":
+            $txta.tae('*');
+            break;
+        case "cizili":
+            $txta.tae('-');
+            break;
+        case "alticizili":
+            $txta.tae('+');
+            break;
+    }
+});
 
 /* üye ol validation kısmı */
 $(document).on('reset','#register',function() {

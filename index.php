@@ -11,7 +11,6 @@ $sacmalik = migirDuzelt(nl2br($we->sacmala($migir)));
 //br kaldıralım ki kaydederken sorun olmasın... Textile için gerekli...
 $wnl = preg_replace('#<br\s*/?>#i', "\n", $sacmalik);
 ?>
-?>
 <!DOCTYPE html>
 <html lang="tr">
     <head>	
@@ -24,6 +23,7 @@ $wnl = preg_replace('#<br\s*/?>#i', "\n", $sacmalik);
         <script type="text/javascript" src="js/site.js"></script>
     </head>
     <body>
+        <div class="wrap">
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container">

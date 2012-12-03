@@ -1,3 +1,4 @@
+    </div>
         <div class="footer">
             <div class="inner">
                 <a href="iletisim.php">iletişim</a> / <a href="facebook_adresi">facebook</a> / <a href="twitter_adresi">twitter</a> 

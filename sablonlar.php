@@ -1,13 +1,21 @@
 <?php
-include_once 'ust.php';
-if (!$MEMBER_LOGGED) {
+require_once('ust.php');
+if (!$MEMBER_LOGGED)
     header("Location: index.php");
-} else {
+else {
     ?>
     <div class="maincontainer">
-        <fieldset class="savedfs">
-            <legend class="savedlegend">Kaydettiklerim</legend>
-            <?php
+        <div class="hqmenu">
+            <ul>
+                <li><a href="hq.php" class="hqmenunav">bilgilerim</a></li>
+                <li class="activehn"><a href="sablonlar.php" class="hqmenunav">şablonlarım</a></li>
+                <li><a href="oa.php" class="hqmenunav">oy alan kayıtlarım</a></li>
+                <li><a href="ov.php" class="hqmenunav">oy verdiklerim</a></li>
+            </ul>        
+        </div>
+        <div class="hqcontainer">
+            <div class="hqinner">
+                <?php
             $sayfabasina = 20; 
             if (empty($_REQUEST['p']) || (!empty($_REQUEST['p']) && !is_numeric($_REQUEST['p'])))
                 $page = 1;
@@ -15,7 +23,7 @@ if (!$MEMBER_LOGGED) {
                 $page = $_REQUEST['p'];
             $db = getPDO();
             $pager = false;
-            $toplamkayit = $db->prepare('SELECT COUNT(*) AS tplkyt FROM kaydedilenler WHERE uid=:uid');
+            $toplamkayit = $db->prepare('SELECT COUNT(*) AS tplkyt FROM sablon WHERE uid=:uid');
             $toplamkayit->bindValue(':uid', $MEMBER->uid);
             $toplamkayit->execute();
             $tploa = $toplamkayit->fetch(PDO::FETCH_OBJ)->tplkyt;
@@ -34,17 +42,18 @@ if (!$MEMBER_LOGGED) {
             else if ($page < 1)
                 $page = 1;
             $baslangic = ($page - 1) * $sayfabasina;
-            $getkayitlar = $db->prepare("SELECT kid, baslik FROM kaydedilenler WHERE uid = :uid ORDER BY tarih DESC LIMIT $baslangic,$sayfabasina");
+            $getkayitlar = $db->prepare("SELECT sid, baslik FROM sablon WHERE uid = :uid ORDER BY tarih DESC LIMIT $baslangic,$sayfabasina");
             $getkayitlar->bindValue(':uid', $MEMBER->uid);
             $getkayitlar->execute();
             if ($getkayitlar->rowCount() === 0) {
-                echo "Kaydettiğiniz bir yazı yok.";
+                echo "Kaydettiğiniz bir şablon yok.";
             } else {
-                $yazilar = $getkayitlar->fetchAll();
-                echo '<ol start="' . ($baslangic + 1) . '">';
-                for ($i = 0; $i < count($yazilar); $i++) {
-                    echo '<li><a href="goster.php?id=' . $yazilar[$i]['kid'] . '">' . $yazilar[$i]['baslik'] . '</a></li>';
-                    if ($i !== count($yazilar) - 1)
+                $sablonlar = $getkayitlar->fetchAll();
+                echo '<span style="margin:0;padding:0;font-size:12pt;">Şablonu düzeltmek için başlığın üstüne tıklayınız.</span>';
+                echo '<ol start="' . ($baslangic + 1) . '" style="margin-top:10px;">';
+                for ($i = 0; $i < count($sablonlar); $i++) {
+                    echo '<li><a href="duzelt.php?id=' . $sablonlar[$i]['sid'] . '">' . $sablonlar[$i]['baslik'] . '</a><br /><a href="uret.php?id=' . $sablonlar[$i]['sid'] . '"><span style="margin-left:10px;font-size:11pt;color:#000">üret</span></a></li>';
+                    if ($i !== count($sablonlar) - 1)
                         echo "<hr />";
                 }
                 echo "</ol>";
@@ -54,7 +63,7 @@ if (!$MEMBER_LOGGED) {
                         if ($j == $page) {
                             echo " $j ";
                         } else {
-                            echo ' <a href="saved.php?p=' . $j . '">' . $j . '</a> ';
+                            echo ' <a href="sablonlar.php?p=' . $j . '">' . $j . '</a> ';
                         }
                         if ($j != $ttlpages)
                             echo ' <span style="color:#ccc">|</span> ';
@@ -63,7 +72,8 @@ if (!$MEMBER_LOGGED) {
                 }
             }
             ?>
-        </fieldset>
+            </div>
+        </div>
     </div>
     <?php
 }

@@ -76,7 +76,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                       }
                       if ($kaydet) { */
                     $kaydet = true;
-                    if (!preg_match('/^[a-zçöğüşıâî\- ]+$/i', $baslik)) //başlık kontrolü yeniden eklendi.
+                    if (!preg_match('/^[a-zçöğüşıâî0-9\.\- ]+$/i', $baslik)) //başlık kontrolü yeniden eklendi.
                         $kaydet = false;
                     if ($kaydet) {
                         $siirekle = $link->prepare('INSERT INTO kaydedilenler (kayit,tarih,uid,baslik) VALUES (:kayit,NOW(),:uid,:baslik)');

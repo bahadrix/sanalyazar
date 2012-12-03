@@ -1,13 +1,8 @@
 <?php
 
-/*
- * Şu an anasayfada çıkan şiirleri kullanıcının, giriş yaptıktan sonra kaydedebilmesi için oluşturulmuş sayfa.
- * Daha sonra şablon yarat için de kullanılabilir. Veya başka sayfa yaparım bilemedim şimdi :)
- */
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     include_once 'core/db.php';
     include_once 'uyekontrol.php';
-    include_once 'classTextile.php';
     if (!$MEMBER_LOGGED)
         header('Location: index.php');
     else {
@@ -25,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
               }
               if ($kaydet) { */
             $kaydet = true;
-            if (!preg_match('/^[a-zçöğüşıâî\- ]+$/i', $baslik)) //başlık kontrolü yeniden eklendi.
+            if (!preg_match('/^[a-zçöğüşıâî0-9\.\- ]+$/i', $baslik)) //başlık kontrolü yeniden eklendi.
                 $kaydet = false;
             if ($kaydet) {
                 $link = getPDO();

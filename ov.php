@@ -8,7 +8,7 @@ else {
         <div class="hqmenu">
             <ul>
                 <li><a href="hq.php" class="hqmenunav">bilgilerim</a></li>
-                <li><a href="#sablon" class="hqmenunav">şablonlarım</a></li>
+                <li><a href="sablonlar.php" class="hqmenunav">şablonlarım</a></li>
                 <li><a href="oa.php" class="hqmenunav">oy alan kayıtlarım</a></li>
                 <li class="activehn"><a href="ov.php" class="hqmenunav">oy verdiklerim</a></li>
             </ul>        
