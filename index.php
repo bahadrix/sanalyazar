@@ -35,8 +35,8 @@ $wnl = preg_replace('#<br\s*/?>#i', "\n", $sacmalik);
                             <div class="upperbox loginbox">
                                 <p style="color:#333;">Giriş</p>
                                 <form action="login.php" method="post" name="loginform">
-                                    <div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span><input name="kuladi" type="text" maxlength="25" placeholder="kullanıcı adı" style="height:30px;" /></div>
-                                    <div class="input-prepend"><span class="add-on"><i class="icon-lock"></i></span><input name="parola" type="password" maxlength="30" placeholder="şifre" style="height:30px;" /></div>
+                                    <div class="input-prepend"><span class="add-on"><i class="icon-user"></i></span><input name="kuladi" type="text" maxlength="25" placeholder="kullanıcı adı"/></div>
+                                    <div class="input-prepend"><span class="add-on"><i class="icon-lock"></i></span><input name="parola" type="password" maxlength="30" placeholder="şifre"/></div>
                                     <?php
                                     /* $currentFile = $_SERVER["PHP_SELF"];
                                       $parts = Explode('/', $currentFile);

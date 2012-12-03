@@ -78,6 +78,9 @@ if (!$MEMBER_LOGGED) {
                     <?php
                 }
             }
+            else {
+                echo "Geçersiz Id.";
+            }
             ?>
 
         </fieldset>

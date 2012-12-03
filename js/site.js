@@ -336,3 +336,24 @@ $(document).on("click",'a[class="hqmenunav"]',function(e) {
     History.pushState(null,null,$(this).attr('href'));
     $(this).parent().addClass('activehn');
 });
+
+$(document).on("click", 'a[href^="uret.php?id="]', function(e) {
+    e.preventDefault();
+    $('.urtsnc').empty();
+    $.ajaxQueue({
+       url: $(this).attr('href'),
+       type: "POST",
+       dataType: "html",
+       success: function(data) {
+           if ((/^goster\.php\?id=\d+/i).test(data))
+               document.location = data;
+           else
+               $('.urtsnc').html(data);
+       }
+    });
+});
+$(document).on("click", 'a[href^="sablonsil.php?id="]', function(e) {
+    e.preventDefault();
+    $('.urtsnc').empty();
+    $('.urtsnc').load($(this).attr('href') + ' .oyreturn');
+});

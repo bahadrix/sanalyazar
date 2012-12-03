@@ -49,10 +49,11 @@ else {
                 echo "Kaydettiğiniz bir şablon yok.";
             } else {
                 $sablonlar = $getkayitlar->fetchAll();
-                echo '<span style="margin:0;padding:0;font-size:12pt;">Şablonu düzeltmek için başlığa tıklayınız.</span>';
+                echo '<span style="margin:0;padding:0;font-size:12pt;"><a href="yeni.php">Şablon yarat</a><br />';
+                echo 'Şablonu düzeltmek için başlığa tıklayınız.<br /><div class="urtsnc"></div></span><hr />';
                 echo '<ol start="' . ($baslangic + 1) . '" style="margin-top:10px;">';
                 for ($i = 0; $i < count($sablonlar); $i++) {
-                    echo '<li><a href="duzelt.php?id=' . $sablonlar[$i]['sid'] . '">' . $sablonlar[$i]['baslik'] . '</a><br /><a href="uret.php?id=' . $sablonlar[$i]['sid'] . '"><span style="margin-left:10px;font-size:11pt;color:#000">üret</span></a></li>';
+                    echo '<li><a href="duzelt.php?id=' . $sablonlar[$i]['sid'] . '">' . $sablonlar[$i]['baslik'] . '</a><br /><a href="uret.php?id=' . $sablonlar[$i]['sid'] . '"><span style="margin-left:10px;font-size:11pt;color:#000">üret</span></a><br /><a href="sablonsil.php?id=' . $sablonlar[$i]['sid'] . '"><span style="margin-left:10px;font-size:11pt;color:#000">sil</span></a></li>';
                     if ($i !== count($sablonlar) - 1)
                         echo "<hr />";
                 }
