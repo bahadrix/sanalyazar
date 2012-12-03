@@ -49,7 +49,7 @@ else {
                 echo "Kaydettiğiniz bir şablon yok.";
             } else {
                 $sablonlar = $getkayitlar->fetchAll();
-                echo '<span style="margin:0;padding:0;font-size:12pt;">Şablonu düzeltmek için başlığın üstüne tıklayınız.</span>';
+                echo '<span style="margin:0;padding:0;font-size:12pt;">Şablonu düzeltmek için başlığa tıklayınız.</span>';
                 echo '<ol start="' . ($baslangic + 1) . '" style="margin-top:10px;">';
                 for ($i = 0; $i < count($sablonlar); $i++) {
                     echo '<li><a href="duzelt.php?id=' . $sablonlar[$i]['sid'] . '">' . $sablonlar[$i]['baslik'] . '</a><br /><a href="uret.php?id=' . $sablonlar[$i]['sid'] . '"><span style="margin-left:10px;font-size:11pt;color:#000">üret</span></a></li>';
