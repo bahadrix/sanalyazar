@@ -6,11 +6,14 @@
  *
  * http://stackoverflow.com/questions/3034874/sequencing-ajax-requests/3035268#3035268
  * http://gnarf.net/2011/06/21/jquery-ajaxqueue/
+ * https://github.com/gnarf37/jquery-ajaxQueue
  * 
  * Requires jQuery 1.5+
  */
-(function(a){var b=a({});a.ajaxQueue=function(c){function g(b){d=a.ajax(c).done(e.resolve).fail(e.reject).then(b,b)}var d,e=a.Deferred(),f=e.promise();b.queue(g),f.abort=function(h){if(d)return d.abort(h);var i=b.queue(),j=a.inArray(g,i);j>-1&&i.splice(j,1),e.rejectWith(c.context||c,[f,h,""]);return f};return f}})(jQuery)
-/* ajaxQueue bitti */
+/*! jQuery Ajax Queue v0.1.2pre | (c) 2013 Corey Frang | Licensed MIT */
+(function(e){var r=e({});e.ajaxQueue=function(n){function t(r){u=e.ajax(n).done(a.resolve).fail(a.reject).then(r,r)}var u,a=e.Deferred(),i=a.promise();return r.queue(t),i.abort=function(o){if(u)return u.abort(o);var c=r.queue(),f=e.inArray(t,c);return f>-1&&c.splice(f,1),a.rejectWith(n.context||n,[i,o,""]),i},i}})(jQuery);
+//@ sourceMappingURL=dist/jquery.ajaxQueue.min.map
+///* ajaxQueue bitti */
 
 
 /**
