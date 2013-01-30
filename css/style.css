@@ -328,7 +328,7 @@ hr {
 .sharebox .sharelinkbox {
     height:10px;
     width:150px;
-    margin-top:12px;
+    margin-top:-10px;
     font-size:9pt;
     font-family:Verdana,Helvetica,Arial,sans-serif;
 }
